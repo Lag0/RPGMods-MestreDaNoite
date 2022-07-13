@@ -6,7 +6,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("permission, perm", Usage = "permission <list>|<save>|<reload>|<set> <0-100> <playername>|<steamid>", Description = "Manage commands and user permissions level.")]
+    [Command("permission, perm", Usage = "permission <list>|<save>|<reload>|<set> <0-100> <playername>|<steamid>", Description = "Gerenciar comandos e nível de permissões do usuário.")]
     public static class Permission
     {
         public static void Initialize(Context ctx)
@@ -33,12 +33,12 @@ namespace RPGMods.Commands
                 else if (args[0].ToLower().Equals("save"))
                 {
                     PermissionSystem.SaveUserPermission();
-                    ctx.Event.User.SendSystemMessage("Saved user permission to JSON file.");
+                    ctx.Event.User.SendSystemMessage("Permissão de usuário salva no arquivo JSON.");
                 }
                 else if (args[0].ToLower().Equals("reload"))
                 {
                     PermissionSystem.LoadPermissions();
-                    ctx.Event.User.SendSystemMessage("Reloaded permission from JSON file.");
+                    ctx.Event.User.SendSystemMessage("Permissão recarregada do arquivo JSON.");
                 }
                 else
                 {
@@ -76,7 +76,7 @@ namespace RPGMods.Commands
                     bool tryFind = Helper.FindPlayer(args[2], false, out var target_playerEntity, out var target_userEntity);
                     if (!tryFind)
                     {
-                        Output.CustomErrorMessage(ctx, $"Could not find specified player \"{args[2]}\".");
+                        Output.CustomErrorMessage(ctx, $"Não foi possível encontrar o jogador especificado\"{args[2]}\".");
                         return;
                     }
                     playerName = args[2];
@@ -87,7 +87,7 @@ namespace RPGMods.Commands
                     playerName = Helper.GetNameFromSteamID(SteamID);
                     if (playerName == null)
                     {
-                        Output.CustomErrorMessage(ctx, $"Could not find specified player steam id \"{args[2]}\".");
+                        Output.CustomErrorMessage(ctx, $"Não foi possível encontrar o ID do Steam do jogador especificado \"{args[2]}\".");
                         return;
                     }
                 }
@@ -95,7 +95,7 @@ namespace RPGMods.Commands
                 if (level == 0) Database.user_permission.Remove(SteamID);
                 else Database.user_permission[SteamID] = level;
 
-                ctx.Event.User.SendSystemMessage($"Player \"{playerName}\" permission is now set to<color=#ffffffff> {level}</color>.");
+                ctx.Event.User.SendSystemMessage($"Player \"{playerName}\" Permissão setada para<color=#ffffffff> {level}</color>.");
                 return;
             }
             else

@@ -5,7 +5,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("kick", Usage = "kick <playername>", Description = "Kick the specified player out of the server.")]
+    [Command("kick", Usage = "kick <nomedojogador>", Description = "Expulse o jogador especificado para fora do servidor.")]
     public static class Kick
     {
         public static void Initialize(Context ctx)
@@ -21,11 +21,11 @@ namespace RPGMods.Commands
             if (Helper.FindPlayer(name, true, out _, out var targetUserEntity))
             {
                 Helper.KickPlayer(targetUserEntity);
-                ctx.Event.User.SendSystemMessage($"Player \"{name}\" has been kicked from server.");
+                ctx.Event.User.SendSystemMessage($"Player \"{name}\" foi kickado do servidor.");
             }
             else
             {
-                Output.CustomErrorMessage(ctx, "Specified player not found.");
+                Output.CustomErrorMessage(ctx, "Jogador não encontrado.");
             }
         }
     }

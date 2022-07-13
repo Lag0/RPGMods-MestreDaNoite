@@ -6,7 +6,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("heat", Usage = "heat", Description = "Shows your current wanted level.")]
+    [Command("heat", Usage = "heat", Description = "Mostra seu nível de procurado atual.")]
     public static class Heat
     {
         private static EntityManager entityManager = VWorld.Server.EntityManager;
@@ -19,7 +19,7 @@ namespace RPGMods.Commands
 
             if (!HunterHunted.isActive)
             {
-                Output.CustomErrorMessage(ctx, "HunterHunted system is not enabled.");
+                Output.CustomErrorMessage(ctx, "sistema de HunterHunted não esta ativo.");
                 return;
             }
 
@@ -39,14 +39,14 @@ namespace RPGMods.Commands
                     }
                     else
                     {
-                        Output.CustomErrorMessage(ctx, $"Could not find specified player \"{name}\".");
+                        Output.CustomErrorMessage(ctx, $"Não foi possível encontrar o jogador \"{name}\".");
                         return;
                     }
                 }
                 if (int.TryParse(ctx.Args[0], out var n)) Cache.heatlevel[SteamID] = n;
                 if (int.TryParse(ctx.Args[1], out var nm)) Cache.bandit_heatlevel[SteamID] = nm;
-                user.SendSystemMessage($"Player \"{CharName}\" heat value changed.");
-                user.SendSystemMessage($"Human: <color=#ffff00ff>{Cache.heatlevel[SteamID]}</color> | Bandit: <color=#ffff00ff>{Cache.bandit_heatlevel[SteamID]}</color>");
+                user.SendSystemMessage($"Player \"{CharName}\" valor de procurado alterado.");
+                user.SendSystemMessage($"Humano: <color=#ffff00ff>{Cache.heatlevel[SteamID]}</color> | Bandit: <color=#ffff00ff>{Cache.bandit_heatlevel[SteamID]}</color>");
                 HunterHunted.HeatManager(userEntity, charEntity, false);
                 return;
             }
@@ -54,12 +54,12 @@ namespace RPGMods.Commands
             HunterHunted.HeatManager(userEntity, charEntity, false);
 
             Cache.heatlevel.TryGetValue(SteamID, out var human_heatlevel);
-            if (human_heatlevel >= 3000) Output.SendLore(userEntity,$"<color=#0048ffff>[Humans]</color> <color=#c90e21ff>YOU ARE A MENACE...</color>");
-            else if (human_heatlevel >= 2000) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c90e21ff>The Vampire Hunters are hunting you...</color>");
-            else if (human_heatlevel >= 1000) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c90e21ff>Humans elite squads are hunting you...</color>");
-            else if (human_heatlevel >= 500) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c4515cff>Humans soldiers are hunting you...</color>");
-            else if (human_heatlevel >= 250) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c9999eff>The humans are hunting you...</color>");
-            else Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#ffffffff>You're currently anonymous...</color>");
+            if (human_heatlevel >= 3000) Output.SendLore(userEntity,$"<color=#0048ffff>[Humans]</color> <color=#c90e21ff>VOCÊ É UMA AMEAÇA...</color>");
+            else if (human_heatlevel >= 2000) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c90e21ff>Os caçadores de vampiros estão caçando você...</color>");
+            else if (human_heatlevel >= 1000) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c90e21ff>Esquadrões de elite estão caçando você...</color>");
+            else if (human_heatlevel >= 500) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c4515cff>Alguns Soldados estão caçando você...</color>");
+            else if (human_heatlevel >= 250) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c9999eff>Os humanos estão caçando você...</color>");
+            else Output.SendLore(userEntity, $"<color=#0048ffff>[Humanos]</color> <color=#ffffffff>Você está atualmente imperceptível...</color>");
 
             Cache.bandit_heatlevel.TryGetValue(SteamID, out var bandit_heatlevel);
             if (bandit_heatlevel >= 2000) Output.SendLore(userEntity, $"<color=#ff0000ff>[Bandits]</color> <color=#c90e21ff>The bandits really wants you dead...</color>");

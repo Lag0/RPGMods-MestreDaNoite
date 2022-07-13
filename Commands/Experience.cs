@@ -6,7 +6,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("experience, exp, xp", Usage = "experience [<log> <on>|<off>]", Description = "Shows your currect experience and progression to next level, or toggle the exp gain notification.")]
+    [Command("experience, exp, xp", Usage = "experience [<log> <on>|<off>]", Description = "Mostra sua experiência atual e progressão para o próximo nível, ou alterna a notificação de ganho de exp.")]
     public static class Experience
     {
         private static EntityManager entityManager = VWorld.Server.EntityManager;
@@ -20,7 +20,7 @@ namespace RPGMods.Commands
 
             if (!ExperienceSystem.isEXPActive)
             {
-                Output.CustomErrorMessage(ctx, "Experience system is not enabled.");
+                Output.CustomErrorMessage(ctx, "O sistema de experiência não está ativo.");
                 return;
             }
 
@@ -41,26 +41,26 @@ namespace RPGMods.Commands
                         }
                         else
                         {
-                            Output.CustomErrorMessage(ctx, $"Could not find specified player \"{name}\".");
+                            Output.CustomErrorMessage(ctx, $"Não foi possível encontrar o jogador \"{name}\".");
                             return;
                         }
                     }
                     Database.player_experience[SteamID] = value;
                     ExperienceSystem.SetLevel(PlayerCharacter, UserEntity, SteamID);
-                    user.SendSystemMessage($"Player \"{CharName}\" Experience is now set to be<color=#ffffffff> {ExperienceSystem.getXp(SteamID)}</color>");
+                    user.SendSystemMessage($"Player \"{CharName}\" Experiência setada para <color=#ffffffff> {ExperienceSystem.getXp(SteamID)}</color>");
                 }
                 else if (ctx.Args[0].ToLower().Equals("log"))
                 {
                     if (ctx.Args[1].ToLower().Equals("on"))
                     {
                         Database.player_log_exp[SteamID] = true;
-                        user.SendSystemMessage($"Experience gain is now logged.");
+                        user.SendSystemMessage($"Ganho de experiência ativado.");
                         return;
                     }
                     else if (ctx.Args[1].ToLower().Equals("off"))
                     {
                         Database.player_log_exp[SteamID] = false;
-                        user.SendSystemMessage($"Experience gain is no longer being logged.");
+                        user.SendSystemMessage($"Ganho de experiência desativado.");
                         return;
                     }
                 }

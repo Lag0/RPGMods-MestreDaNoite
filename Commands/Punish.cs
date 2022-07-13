@@ -4,7 +4,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("punish", Usage = "punish <playername> [<remove>]", Description = "Manually punish someone or lift their debuff.")]
+    [Command("punish", Usage = "punish <nomedoplayer> [<remove>]", Description = "Punir manualmente alguém ou retirar seu debuff.")]
     public static class Punish
     {
         public static void Initialize(Context ctx)
@@ -19,7 +19,7 @@ namespace RPGMods.Commands
                         if (ctx.Args[1].ToLower().Equals("remove"))
                         {
                             Helper.RemoveBuff(CharEntity, Database.buff.Severe_GarlicDebuff);
-                            ctx.Event.User.SendSystemMessage($"Punishment debuff removed from player \"{PlayerName}\"");
+                            ctx.Event.User.SendSystemMessage($"Debuff de punição removido do jogador \"{PlayerName}\"");
                             return;
                         }
                         else
@@ -31,13 +31,13 @@ namespace RPGMods.Commands
                     else
                     {
                         Helper.ApplyBuff(UserEntity, CharEntity, Database.buff.Severe_GarlicDebuff);
-                        ctx.Event.User.SendSystemMessage($"Applied punishment debuff to player \"{PlayerName}\"");
+                        ctx.Event.User.SendSystemMessage($"Debuff de punição aplicado ao jogador \"{PlayerName}\"");
                         return;
                     }
                 }
                 else
                 {
-                    Output.CustomErrorMessage(ctx, "Player not found.");
+                    Output.CustomErrorMessage(ctx, "Jogador não encontrado.");
                     return;
                 }
             }

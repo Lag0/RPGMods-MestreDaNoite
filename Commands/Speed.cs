@@ -7,7 +7,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("speed", Usage = "speed", Description = "Toggles increased movement speed.")]
+    [Command("speed", Usage = "speed", Description = "Alterna o aumento da velocidade de movimento.")]
 
     public static class Speed
     {
@@ -18,8 +18,8 @@ namespace RPGMods.Commands
             if (isSpeeding) isSpeeding = false;
             else isSpeeding = true;
             UpdateSpeed(ctx, isSpeeding);
-            string s = isSpeeding ? "Activated" : "Deactivated";
-            ctx.Event.User.SendSystemMessage($"Speed buff <color=#ffff00ff>{s}</color>");
+            string s = isSpeeding ? "Ativado" : "Desativado";
+            ctx.Event.User.SendSystemMessage($"Buff de Velocidade <color=#ffff00ff>{s}</color>");
             Helper.ApplyBuff(ctx.Event.SenderUserEntity, ctx.Event.SenderCharacterEntity, Database.buff.Buff_VBlood_Perk_Moose);
         }
 

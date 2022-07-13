@@ -5,7 +5,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("bloodpotion, bp", Usage = "bloodpotion <Type> [<Quality>]", Description = "Creates a Potion with specified Blood Type, Quality and Value")]
+    [Command("bloodpotion, bp", Usage = "bloodpotion <Type> [<Quality>]", Description = "Receba uma Poção com Tipo de Sangue, Qualidade e Valor especificados")]
     public static class BloodPotion
     {
         public static void Initialize(Context ctx)
@@ -31,7 +31,7 @@ namespace RPGMods.Commands
                     blood.BloodType = new PrefabGUID((int)type);
                     ctx.EntityManager.SetComponentData(entity, blood);
 
-                    ctx.Event.User.SendSystemMessage($"Got Blood Potion Type <color=#ffff00ff>{type}</color> with <color=#ffff00ff>{quality}</color>% quality");
+                    ctx.Event.User.SendSystemMessage($"Recebido Poção de sangue do tipo <color=#ffff00ff>{type}</color> com <color=#ffff00ff>{quality}</color>% de qualidade");
                 }
                 catch
                 {

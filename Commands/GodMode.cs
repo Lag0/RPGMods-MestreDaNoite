@@ -6,7 +6,7 @@ using RPGMods.Utils;
 
 namespace RPGMods.Commands
 {
-    [Command("godmode, god", Usage = "godmode", Description = "Toggles god mode.")]
+    [Command("godmode, god", Usage = "godmode", Description = "Alterna o god mode.")]
     public static class GodMode
     {
         public static void Initialize(Context ctx)
@@ -16,7 +16,7 @@ namespace RPGMods.Commands
             if (isGodMode) isGodMode = false;
             else isGodMode = true;
             UpdateGodMode(ctx, isGodMode);
-            string s = isGodMode ? "Activated" : "Deactivated";
+            string s = isGodMode ? "Ativado" : "Desativado";
             ctx.Event.User.SendSystemMessage($"God mode <color=#ffff00ff>{s}</color>");
             Helper.ApplyBuff(ctx.Event.SenderUserEntity, ctx.Event.SenderCharacterEntity, Database.buff.Buff_VBlood_Perk_Moose);
         }

@@ -5,7 +5,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("health, hp", Usage = "health <percentage> [<player name>]", Description = "Sets your current Health")]
+    [Command("health, hp", Usage = "health <porcentagem> [<nome do player>]", Description = "Define a vida atual sua ou de outro player")]
     public static class Health
     {
         public static void Initialize(Context ctx)
@@ -35,7 +35,7 @@ namespace RPGMods.Commands
                 }
                 else
                 {
-                    Utils.Output.CustomErrorMessage(ctx, $"Player \"{targetName}\" not found.");
+                    Utils.Output.CustomErrorMessage(ctx, $"Player \"{targetName}\" não encontrada.");
                     return;
                 }
             }
@@ -48,7 +48,7 @@ namespace RPGMods.Commands
             };
             VWorld.Server.GetExistingSystem<DebugEventsSystem>().ChangeHealthEvent(UserIndex, ref HealthEvent);
 
-            ctx.Event.User.SendSystemMessage($"Player \"{PlayerName}\" Health set to <color=#ffff00ff>{Value}%</color>");
+            ctx.Event.User.SendSystemMessage($"Player \"{PlayerName}\" Definida para <color=#ffff00ff>{Value}%</color>");
         }
     }
 }

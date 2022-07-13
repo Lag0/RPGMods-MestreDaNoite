@@ -9,7 +9,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("autorespawn", Usage = "autorespawn [<PlayerName>]", Description = "Toggle auto respawn on the same position on death.")]
+    [Command("autorespawn", Usage = "autorespawn [<PlayerName>]", Description = "Alterne o respawn do player para automático na mesma posição de sua morte.")]
     public static class AutoRespawn
     {
         public static void Initialize(Context ctx)
@@ -38,7 +38,7 @@ namespace RPGMods.Commands
                     }
                     else
                     {
-                        Utils.Output.CustomErrorMessage(ctx, $"Player \"{TargetName}\" not found!");
+                        Utils.Output.CustomErrorMessage(ctx, $"Player \"{TargetName}\" não encontrado!");
                         return;
                     }
                 }
@@ -47,10 +47,10 @@ namespace RPGMods.Commands
             if (isAutoRespawn) isAutoRespawn = false;
             else isAutoRespawn = true;
             UpdateAutoRespawn(SteamID, isAutoRespawn);
-            string s = isAutoRespawn ? "Activated" : "Deactivated";
+            string s = isAutoRespawn ? "Ativado" : "Desativado";
             if (isServerWide)
             {
-                ctx.Event.User.SendSystemMessage($"Server wide Auto Respawn <color=#ffff00ff>{s}</color>");
+                ctx.Event.User.SendSystemMessage($"Auto Respawn em todo o servidor <color=#ffff00ff>{s}</color>");
             }
             else
             {
