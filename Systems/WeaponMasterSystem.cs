@@ -43,6 +43,15 @@ namespace RPGMods.Systems
             if (WeaponType == WeaponType.None) MasteryValue = (int)VictimStats.SpellPower;
             else MasteryValue = (int)VictimStats.PhysicalPower;
 
+            TimeSpan start = new TimeSpan(18, 0, 0); //18 o'clock
+            TimeSpan end = new TimeSpan(23, 0, 0);//23 o'clock
+            TimeSpan now = DateTime.Now.TimeOfDay;
+
+            if ((now > start) && (now < end))
+            {
+                MasteryValue = (int)(MasteryValue * (rand.Next(10, 100) * 0.03));
+            }
+
             MasteryValue = (int)(MasteryValue * (rand.Next(10, 100) * 0.01));
 
             bool isVBlood;
@@ -61,8 +70,22 @@ namespace RPGMods.Systems
             if (em.HasComponent<PlayerCharacter>(Victim))
             {
                 Equipment VictimGear = em.GetComponentData<Equipment>(Victim);
-                var BonusMastery = VictimGear.ArmorLevel + VictimGear.WeaponLevel + VictimGear.SpellLevel;
-                MasteryValue *= (int)(1 + (BonusMastery * 0.01));
+                Equipment KillerGear = em.GetComponentData<Equipment>(Killer);
+                var GearScoreKiller = KillerGear.ArmorLevel + KillerGear.SpellLevel;
+                var GearScoreVictim = VictimGear.ArmorLevel + VictimGear.SpellLevel;
+                var BonusMasteryVictim = VictimGear.ArmorLevel + VictimGear.WeaponLevel + VictimGear.SpellLevel;
+                if (GearScoreVictim > GearScoreKiller)
+                {
+                    MasteryValue *= (int)(1 + (BonusMasteryVictim * 0.03));
+                }
+                if (GearScoreVictim == GearScoreKiller)
+                {
+                    MasteryValue *= (int)(1 + (BonusMasteryVictim * 0.02));
+                }
+                else
+                {
+                    MasteryValue += 0;
+                }
             }
 
             MasteryValue = (int)(MasteryValue * MasteryMultiplier);
@@ -72,7 +95,7 @@ namespace RPGMods.Systems
             if (isDatabaseEXPLog)
             {
                 if (!isLogging) return;
-                Output.SendLore(userEntity, $"<color=#ffb700ff>Weapon mastery has increased by {MasteryValue * 0.001}%</color>");
+                Output.SendLore(userEntity, $"<color=#ffb700ff>Maestria da arma aumentada em {MasteryValue * 0.001}%</color>");
             }
         }
 
@@ -110,7 +133,7 @@ namespace RPGMods.Systems
                 {
                     int DecayValue = Offline_DecayValue * DecayTicks *-1;
                     
-                    Output.SendLore(userEntity, $"You've been sleeping for {(int)elapsed_time.TotalMinutes} minute(s). Your mastery has decayed by {DecayValue*0.001}%");
+                    Output.SendLore(userEntity, $"Você dormiu por {(int)elapsed_time.TotalMinutes} minuto(s). Todas suas maestrias cairam por {DecayValue*0.001}%");
 
                     foreach (WeaponType type in Enum.GetValues(typeof(WeaponType)))
                     {
@@ -254,9 +277,6 @@ namespace RPGMods.Systems
                             });
                         }
                         break;
-                    default:
-                        break;
-                        //-- Nothing for Fishing Pole
                 }
             }
         }
@@ -273,14 +293,21 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.SpellPower,
-                            Value = (float)(PMastery * 0.125),
+                            Value = (float)(PMastery * 0.125), //-- 0.125 = 12.5 Spell Power increase
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.125),
+                            Value = (float)(PMastery * 0.125), //-- 0.125 = 12.5 Attack Power increase
+                            ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        {
+                            StatType = UnitStatType.MovementSpeed,
+                            Value = (float)(PMastery * 0.005), //-- 0.005 = 0.5 of MovementSpeed Increase (12.5%)
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -289,7 +316,7 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.25),
+                            Value = (float)(PMastery * 0.25), //-- 0.25 = 25.0 Attack Power increase
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -298,14 +325,14 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.125),
+                            Value = (float)(PMastery * 0.125), //-- 0.125 = 12.5 Attack Power increase
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.MaxHealth,
-                            Value = (float)(PMastery * 0.5),
+                            Value = (float)(PMastery * 0.5), //-- 0.5 = 50 Max Health Increase
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -313,16 +340,30 @@ namespace RPGMods.Systems
                     case WeaponType.Scythe:
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
-                            StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.125),
+                            StatType = UnitStatType.SpellPower,
+                            Value = (float)(PMastery * 0.1), //-- 0.1 = 10 of SpellPower Increase
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
-                            StatType = UnitStatType.PhysicalCriticalStrikeChance,
-                            Value = (float)(PMastery * 0.00125),
+                            StatType = UnitStatType.SpellCriticalStrikeChance,
+                            Value = (float)(PMastery * 0.0030), //-- 0.0030 = 30% of Critical Spell Damage increase.
                             ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        {
+                            StatType = UnitStatType.MaxHealth,
+                            Value = (float)(PMastery * -0.5), //-- 0.5 = 50 of MaxHealth Decrease
+                            ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        {
+                            StatType = UnitStatType.CooldownModifier,
+                            Value = (float)(1 - PMastery * 0.01 * 0.2), //-- 20% Cooldown Reduction
+                            ModificationType = ModificationType.Set,
                             Id = ModificationId.NewId(0)
                         });
                         break;
@@ -330,14 +371,21 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalCriticalStrikeChance,
-                            Value = (float)(PMastery * 0.00125),
+                            Value = (float)(PMastery * 0.0100), //-- 0.01 = 100% of Critical Strike Increase 
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.MovementSpeed,
-                            Value = (float)(PMastery * 0.005),
+                            Value = (float)(PMastery * 0.0075), //-- 0.0075 = 0.75 of MovementSpeed Increase (18.75%)
+                            ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        {
+                            StatType = UnitStatType.MaxHealth,
+                            Value = (float)(PMastery * -0.5), //-- 0.5 = 50 of MaxHealth Decrease
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -346,16 +394,37 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.MaxHealth,
-                            Value = (float)(PMastery),
+                            Value = (float)(PMastery), //-- 100HP 
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
                         break;
-                    case WeaponType.Crossbow:
+                    case WeaponType.Crossbow: 
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        {
+                            StatType = UnitStatType.PhysicalCriticalStrikeDamage,
+                            Value = (float)(PMastery * 0.0030), //-- 0.0030 = 30% of Critical Damage increase.
+                            ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalCriticalStrikeChance,
-                            Value = (float)(PMastery * 0.0025),
+                            Value = (float)(PMastery * 0.0004), //-- 0.0004 = 4% of Critical Chance increase.
+                            ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        {
+                            StatType = UnitStatType.PrimaryAttackSpeed,
+                            Value = (float)(PMastery * 0.01), //-- 0.0100 = 1.0 of Attack Speed increase. (25%) +-
+                            ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        {
+                            StatType = UnitStatType.PhysicalPower,
+                            Value = (float)(PMastery * 0.1), //-- 0.100 = 10.0 of Attack Damage increase.
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -364,31 +433,25 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.MovementSpeed,
-                            Value = (float)(PMastery * 0.01),
+                            Value = (float)(PMastery * 0.005), //-- 0.005 = 0.5 of MovementSpeed Increase (12.5%)
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.25),
+                            Value = (float)(PMastery * 0.40), //-- 0.40 = 40.0 of Attack Damage increase.
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
-                        if (SMastery > 0)
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
-                            Buffer.Add(new ModifyUnitStatBuff_DOTS()
-                            {
-                                StatType = UnitStatType.CooldownModifier,
-                                Value = (float)(1 - SMastery * 0.01 * 0.5),
-                                ModificationType = ModificationType.Set,
-                                Id = ModificationId.NewId(0)
-                            });
-                        }
+                            StatType = UnitStatType.SpellPower,
+                            Value = (float)(PMastery * 0.10), //-- 0.1 = 10.0 Spell Power increase.
+                            ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
                         break;
-                    default:
-                        break;
-                    //-- Nothing for Fishing Pole
                 }
             }
         }
