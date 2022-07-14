@@ -8,7 +8,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("mastery, m", Usage = "mastery [<log> <on>|<off>]", Description = "Display your current mastery progression, or toggle the gain notification.")]
+    [Command("mastery, m", Usage = "mastery [<log> <on>|<off>]", Description = "Exiba sua progressão de maestria atual ou alterne a notificação.")]
     public static class Mastery
     {
         private static EntityManager entityManager = VWorld.Server.EntityManager;
@@ -16,7 +16,7 @@ namespace RPGMods.Commands
         {
             if (!WeaponMasterSystem.isMasteryEnabled)
             {
-                Output.CustomErrorMessage(ctx, "Weapon Mastery system is not enabled.");
+                Output.CustomErrorMessage(ctx, "O sistema de maestria não está ativado.");
                 return;
             }
             var SteamID = ctx.Event.User.PlatformId;
@@ -44,7 +44,7 @@ namespace RPGMods.Commands
                             }
                             else
                             {
-                                Output.CustomErrorMessage(ctx, $"Could not find specified player \"{name}\".");
+                                Output.CustomErrorMessage(ctx, $"Não foi possível encontrar o jogador especificado \"{name}\".");
                                 return;
                             }
                         }
@@ -63,7 +63,7 @@ namespace RPGMods.Commands
                             Output.InvalidArguments(ctx);
                             return;
                         }
-                        ctx.Event.User.SendSystemMessage($"{ctx.Args[1].ToUpper()} Mastery for \"{CharName}\" is now set as<color=#ffffffff>  {value * 0.001}%</color>");
+                        ctx.Event.User.SendSystemMessage($"{ctx.Args[1].ToUpper()} Maestria do \"{CharName}\" foi modificada para <color=#ffffffff>  {value * 0.001}%</color>");
                         Helper.ApplyBuff(UserEntity, CharEntity, Database.buff.Buff_VBlood_Perk_Moose);
                         return;
                         
@@ -79,13 +79,13 @@ namespace RPGMods.Commands
                     if (ctx.Args[1].ToLower().Equals("on"))
                     {
                         Database.player_log_mastery[SteamID] = true;
-                        ctx.Event.User.SendSystemMessage($"Mastery gain is now logged.");
+                        ctx.Event.User.SendSystemMessage($"O ganho de maestria agora é mostrado.");
                         return;
                     }
                     else if (ctx.Args[1].ToLower().Equals("off"))
                     {
                         Database.player_log_mastery[SteamID] = false;
-                        ctx.Event.User.SendSystemMessage($"Mastery gain is no longer being logged.");
+                        ctx.Event.User.SendSystemMessage($"O ganho de maestria não está mais sendo mostrado.");
                         return;
                     }
                     else
@@ -100,20 +100,20 @@ namespace RPGMods.Commands
                 bool isDataExist = Database.player_weaponmastery.TryGetValue(SteamID, out var MasteryData);
                 if (!isDataExist)
                 {
-                    Output.CustomErrorMessage(ctx, "You haven't even tried to master anything...");
+                    Output.CustomErrorMessage(ctx, "Você nem tentou masterizar nada ainda...");
                     return;
                 }
 
-                ctx.Event.User.SendSystemMessage("-- <color=#ffffffff>Weapon Mastery</color> --");
-                ctx.Event.User.SendSystemMessage($"Sword:<color=#ffffffff> {(double)MasteryData.Sword * 0.001}%</color> (ATK <color=#75FF33FF>↑</color>, SPL <color=#75FF33FF>↑</color>)");
-                ctx.Event.User.SendSystemMessage($"Spear:<color=#ffffffff> {(double)MasteryData.Spear * 0.001}%</color> (ATK <color=#75FF33FF>↑↑</color>)");
-                ctx.Event.User.SendSystemMessage($"Axes:<color=#ffffffff> {(double)MasteryData.Axes * 0.001}%</color> (ATK <color=#75FF33FF>↑</color>, HP <color=#75FF33FF>↑</color>)");
-                ctx.Event.User.SendSystemMessage($"Scythe:<color=#ffffffff> {(double)MasteryData.Scythe * 0.001}%</color> (ATK <color=#75FF33FF>↑</color>, CRIT <color=#75FF33FF>↑</color>)");
-                ctx.Event.User.SendSystemMessage($"Slashers:<color=#ffffffff> {(double)MasteryData.Slashers * 0.001}%</color> (CRIT <color=#75FF33FF>↑</color>, MOV <color=#75FF33FF>↑</color>)");
-                ctx.Event.User.SendSystemMessage($"Mace:<color=#ffffffff> {(double)MasteryData.Mace * 0.001}%</color> (HP <color=#75FF33FF>↑↑</color>)");
-                ctx.Event.User.SendSystemMessage($"None:<color=#ffffffff> {(double)MasteryData.None * 0.001}%</color> (ATK <color=#75FF33FF>↑↑</color>, MOV <color=#75FF33FF>↑↑</color>)");
-                ctx.Event.User.SendSystemMessage($"Spell:<color=#ffffffff> {(double)MasteryData.Spell * 0.001}%</color> (CD <color=#75FF33FF>↓↓</color>)");
-                ctx.Event.User.SendSystemMessage($"Crossbow:<color=#ffffffff> {(double)MasteryData.Crossbow * 0.001}%</color> (CRIT <color=#75FF33FF>↑↑</color>)");
+                ctx.Event.User.SendSystemMessage("------------------ <color=#ffffffff>Maestria das Armas</color> ------------------");
+                ctx.Event.User.SendSystemMessage($"Espada:<color=#ffffffff> {(double)MasteryData.Sword * 0.001}%</color> (AD <color=#75FF33FF>10</color>, AP <color=#75FF33FF>10</color>, MOV <color=#75FF33FF>12.5%</color>)");
+                ctx.Event.User.SendSystemMessage($"Lança:<color=#ffffffff> {(double)MasteryData.Spear * 0.001}%</color> (AD <color=#75FF33FF>25</color>)");
+                ctx.Event.User.SendSystemMessage($"Machado:<color=#ffffffff> {(double)MasteryData.Axes * 0.001}%</color> (AD <color=#75FF33FF>15</color>, HP <color=#75FF33FF>50</color>)");
+                ctx.Event.User.SendSystemMessage($"Foiçe:<color=#ffffffff> {(double)MasteryData.Scythe * 0.001}%</color> (AP <color=#75FF33FF>10</color>, CRIT <color=#75FF33FF>30%</color>, CD <color=#75FF33FF>25%</color>, HP <color=#F00000FF>100</color>)");
+                ctx.Event.User.SendSystemMessage($"Adagas:<color=#ffffffff> {(double)MasteryData.Slashers * 0.001}%</color> (CRIT <color=#75FF33FF>100%</color>, MOV <color=#75FF33FF>18.75%</color>, HP <color=#F00000FF>50</color>)");
+                ctx.Event.User.SendSystemMessage($"Maça:<color=#ffffffff> {(double)MasteryData.Mace * 0.001}%</color> (HP <color=#75FF33FF>100</color>, RESISTÊNCIA <color=#75FF33FF>5%</color>)");
+                ctx.Event.User.SendSystemMessage($"Punho:<color=#ffffffff> {(double)MasteryData.None * 0.001}%</color> (AD <color=#75FF33FF>40</color>, AP <color=#75FF33FF>10</color>, MOV <color=#75FF33FF>12,5%</color>)");
+                //ctx.Event.User.SendSystemMessage($"Punho Mágico:<color=#ffffffff> {(double)MasteryData.Spell * 0.001}%</color> (AP <color=#75FF33FF>10</color>)");
+                ctx.Event.User.SendSystemMessage($"Besta:<color=#ffffffff> {(double)MasteryData.Crossbow * 0.001}%</color> (CRIT <color=#75FF33FF>30%</color>, AD <color=#75FF33FF>10</color>, ATKS <color=#75FF33FF>37.5%</color>)");
                 //ctx.Event.User.SendSystemMessage($"Fishing Pole: <color=#ffffffff>{(double)MasteryData.FishingPole * 0.001}%</color> (??? ↑↑)");
             }
         }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using Cpp2IL.Core.Analysis.Actions.x86.Important;
 using Unity.Entities;
 using Wetstone.API;
 using RPGMods.Utils;
@@ -40,8 +41,12 @@ namespace RPGMods.Systems
 
             int MasteryValue;
             var VictimStats = em.GetComponentData<UnitStats>(Victim);
-            if (WeaponType == WeaponType.None) MasteryValue = (int)VictimStats.SpellPower;
-            else MasteryValue = (int)VictimStats.PhysicalPower;
+            var VictimGearScore = em.GetComponentData<UnitLevel>(Victim).Level;
+            var KillerGearScore = em.GetComponentData<Equipment>(Killer).GetFullLevel();
+            if (WeaponType == WeaponType.None && KillerGearScore > VictimGearScore) MasteryValue = (int)VictimStats.SpellPower;
+            if (WeaponType == WeaponType.None) MasteryValue = (int)((int)VictimStats.SpellPower + (VictimGearScore - KillerGearScore));
+            if (KillerGearScore > VictimGearScore) MasteryValue = (int)VictimStats.PhysicalPower;
+            else MasteryValue = (int)((int)VictimStats.PhysicalPower + (VictimGearScore - KillerGearScore));
 
             TimeSpan start = new TimeSpan(18, 0, 0); //18 o'clock
             TimeSpan end = new TimeSpan(23, 0, 0);//23 o'clock
@@ -49,7 +54,7 @@ namespace RPGMods.Systems
 
             if ((now > start) && (now < end))
             {
-                MasteryValue = (int)(MasteryValue * (rand.Next(10, 100) * 0.03));
+                MasteryValue = (int)(MasteryValue * (rand.Next(10, 100) * 0.02));
             }
 
             MasteryValue = (int)(MasteryValue * (rand.Next(10, 100) * 0.01));
@@ -293,14 +298,14 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.SpellPower,
-                            Value = (float)(PMastery * 0.125), //-- 0.125 = 12.5 Spell Power increase
+                            Value = (float)(PMastery * 0.10), //-- 0.125 = 12.5 Spell Power increase
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.125), //-- 0.125 = 12.5 Attack Power increase
+                            Value = (float)(PMastery * 0.10), //-- 0.125 = 12.5 Attack Power increase
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -325,7 +330,7 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.125), //-- 0.125 = 12.5 Attack Power increase
+                            Value = (float)(PMastery * 0.15), //-- 0.15 = 15.0 Attack Power increase
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -355,7 +360,7 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.MaxHealth,
-                            Value = (float)(PMastery * -0.5), //-- 0.5 = 50 of MaxHealth Decrease
+                            Value = (float)(PMastery * -1.0), //-- 1/0 = 100 of MaxHealth Decrease
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -398,6 +403,20 @@ namespace RPGMods.Systems
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        {
+                            StatType = UnitStatType.PhysicalResistance,
+                            Value = (float)(PMastery * 0.00050), //-- 5% de Res AD
+                            ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        {
+                            StatType = UnitStatType.SpellResistance,
+                            Value = (float)(PMastery * 0.0025), //-- 33% de Res AP
+                            ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
                         break;
                     case WeaponType.Crossbow: 
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
@@ -417,7 +436,7 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PrimaryAttackSpeed,
-                            Value = (float)(PMastery * 0.01), //-- 0.0100 = 1.0 of Attack Speed increase. (25%) +-
+                            Value = (float)(PMastery * 0.015), //-- 0.0150 = 1.5 of Attack Speed increase. (37.5%) +-
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -440,7 +459,7 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.40), //-- 0.40 = 40.0 of Attack Damage increase.
+                            Value = (float)(PMastery * 0.60), //-- 0.60 = 60.0 of Attack Damage increase.
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });

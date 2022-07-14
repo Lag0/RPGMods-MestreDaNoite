@@ -6,7 +6,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("heat", Usage = "heat", Description = "Shows your current wanted level.")]
+    [Command("heat", Usage = "heat", Description = "Mostra seu nivel de procurado atual.")]
     public static class Heat
     {
         private static EntityManager entityManager = VWorld.Server.EntityManager;

@@ -9,7 +9,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("help, h", Usage = "help [<command>]", Description = "Shows a list of commands, or details about a command.", ReqPermission = 0)]
+    [Command("help, h", Usage = "help [<command>]", Description = "Mostra uma lista de comandos ou detalhes sobre um comando.", ReqPermission = 0)]
     public static class Help
     {
         public static void Initialize(Context ctx)
