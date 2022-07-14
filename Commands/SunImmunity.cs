@@ -10,7 +10,7 @@ using System;
 
 namespace RPGMods.Commands
 {
-    [Command("sunimmunity, sun", Usage = "sunimmunity", Description = "Alterna a imunidade ao sol.")]
+    [Command("sunimmunity, sun", Usage = "sunimmunity", Description = "Toggles sun immunity.")]
     public static class SunImmunity
     {
         public static void Initialize(Context ctx)
@@ -20,8 +20,8 @@ namespace RPGMods.Commands
             if (isSunImmune) isSunImmune = false;
             else isSunImmune = true;
             UpdateImmunity(ctx, isSunImmune);
-            string s = isSunImmune ? "Ativado" : "Desativado";
-            ctx.Event.User.SendSystemMessage($"Imunidade ao sol <color=#ffff00ff>{s}</color>");
+            string s = isSunImmune ? "Activated" : "Deactivated";
+            ctx.Event.User.SendSystemMessage($"Sun Immunity <color=#ffff00ff>{s}</color>");
             Helper.ApplyBuff(ctx.Event.SenderUserEntity, ctx.Event.SenderCharacterEntity, Database.buff.Buff_VBlood_Perk_Moose);
         }
 

@@ -10,7 +10,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("waypoint, wp", "waypoint <Name|Set|Remove|List> [<Name>] [global]", "Teleporta você para waypoints criados anteriormente.")]
+    [Command("waypoint, wp", "waypoint <Name|Set|Remove|List> [<Name>] [global]", "Teleports you to previously created waypoints.")]
     public static class Waypoint
     {
         public static int WaypointLimit = 3;
@@ -21,12 +21,12 @@ namespace RPGMods.Commands
             var SteamID = ctx.Event.User.PlatformId;
             if (Helper.IsPlayerInCombat(PlayerEntity))
             {
-                Output.CustomErrorMessage(ctx, "Não foi possível usar o waypoint! Você está em combate!");
+                Output.CustomErrorMessage(ctx, "Unable to use waypoint! You're in combat!");
                 return;
             }
             if (ctx.Args.Length < 1)
             {
-                ctx.Event.User.SendSystemMessage("Parâmetros ausentes.");
+                ctx.Event.User.SendSystemMessage("Missing parameters.");
                 return;
             }
 
@@ -42,7 +42,7 @@ namespace RPGMods.Commands
                     if ((args_2nd.Equals("true") || args_2nd.Equals("global")) && isAllowed) global = true;
                     else
                     {
-                        Output.CustomErrorMessage(ctx, "Você não tem permissão para editar um waypoint global.");
+                        Output.CustomErrorMessage(ctx, "You do not have permission to edit a global waypoint.");
                         return;
                     }
                 }
@@ -50,7 +50,7 @@ namespace RPGMods.Commands
                 {
                     if (Database.globalWaypoint.TryGetValue(wp_name, out _))
                     {
-                        Output.CustomErrorMessage(ctx, $"Um waypoint global com o \"{wp_name}\" nome ja existe. Por favor, renomeie seu waypoint.");
+                        Output.CustomErrorMessage(ctx, $"A global waypoint with the \"{wp_name}\" name existed. Please rename your waypoint.");
                         return;
                     }
                     if (!global)
@@ -59,21 +59,21 @@ namespace RPGMods.Commands
                         {
                             if (total >= WaypointLimit)
                             {
-                                Output.CustomErrorMessage(ctx, "Você já atingiu seu limite total de waypoints.");
+                                Output.CustomErrorMessage(ctx, "You already have reached your total waypoint limit.");
                                 return;
                             }
                         }
                         wp_name = wp_name + "_" +SteamID;
                         if (Database.waypoints.TryGetValue(wp_name, out _))
                         {
-                            Output.CustomErrorMessage(ctx, $"Você já tem um waypoint com o mesmo nome.");
+                            Output.CustomErrorMessage(ctx, $"You already have a waypoint with the same name.");
                             return;
                         }
                     }
                     var location = ctx.EntityManager.GetComponentData<LocalToWorld>(ctx.Event.SenderCharacterEntity).Position;
                     var f2_location = new Float2(location.x, location.z);
                     AddWaypoint(SteamID, f2_location, wp_name, wp_true_name, global);
-                    ctx.Event.User.SendSystemMessage("Waypoint adicionado com sucesso.");
+                    ctx.Event.User.SendSystemMessage("Successfully added Waypoint.");
                     return;
                 }
                 if (ctx.Args[0].ToLower().Equals("remove"))
@@ -88,11 +88,11 @@ namespace RPGMods.Commands
                         wp_name = wp_name + "_" + SteamID;
                         if (!Database.waypoints.TryGetValue(wp_name, out _))
                         {
-                            Output.CustomErrorMessage(ctx, $"Você não tem nenhum waypoint com este nome.");
+                            Output.CustomErrorMessage(ctx, $"You do not have any waypoint with this name.");
                             return;
                         }
                     }
-                    ctx.Event.User.SendSystemMessage("Waypoint removido com sucesso.");
+                    ctx.Event.User.SendSystemMessage("Successfully removed Waypoint.");
                     RemoveWaypoint(SteamID, wp_name, global);
                     return;
                 }

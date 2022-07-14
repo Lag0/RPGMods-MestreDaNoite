@@ -94,7 +94,7 @@ namespace RPGMods.Systems
             var victim_name = victim_user.CharacterName.ToString();
             var victim_id = victim_user.PlatformId;
 
-            victim_user.SendSystemMessage($"<color=#c90e21ff>Você foi morto por  \"{killer_name}\"</color>");
+            victim_user.SendSystemMessage($"<color=#c90e21ff>You've been killed by \"{killer_name}\"</color>");
 
             Database.pvpkills.TryGetValue(killer_id, out var KillerKills);
             Database.pvpdeath.TryGetValue(victim_id, out var VictimDeath);
@@ -106,7 +106,7 @@ namespace RPGMods.Systems
             UpdateKD(killer_id, victim_id);
 
             //-- Announce Kills
-            if (announce_kills) ServerChatUtils.SendSystemMessageToAllClients(em, $"O Vampiro \"{killer_name}\" sugou \"{victim_name}\"!");
+            if (announce_kills) ServerChatUtils.SendSystemMessageToAllClients(em, $"Vampire \"{killer_name}\" has killed \"{victim_name}\"!");
         }
 
         public static void UpdateKD(ulong killer_id, ulong victim_id)

@@ -6,7 +6,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("give, g", Usage = "give <nomedoitem> [<quantidade>]", Description = "Adiciona itens especificos ao seu inventário")]
+    [Command("give, g", Usage = "give <itemname> [<amount>]", Description = "Adds specified items to your inventory")]
     public static class Give
     {
         public static void Initialize(Context ctx)
@@ -21,12 +21,12 @@ namespace RPGMods.Commands
             PrefabGUID guid = Helper.GetGUIDFromName(name);
             if (guid.GuidHash == 0)
             {
-                Output.CustomErrorMessage(ctx, "Não foi possivel encontrar esse item.");
+                Output.CustomErrorMessage(ctx, "Could not find specified item name.");
                 return;
             }
 
             Helper.AddItemToInventory(ctx, guid, amount);
-            ctx.Event.User.SendSystemMessage($"Item recebido <color=#ffff00ff>{amount} {CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name)}</color>");
+            ctx.Event.User.SendSystemMessage($"You got <color=#ffff00ff>{amount} {CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name)}</color>");
         }
     }
 }

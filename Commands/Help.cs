@@ -9,7 +9,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("help, h", Usage = "help [<comando>]", Description = "Mostra uma lista de comandos ou detalhes sobre um comando.", ReqPermission = 0)]
+    [Command("help, h", Usage = "help [<command>]", Description = "Shows a list of commands, or details about a command.", ReqPermission = 0)]
     public static class Help
     {
         public static void Initialize(Context ctx)
@@ -31,7 +31,7 @@ namespace RPGMods.Commands
 
                     if (userPermission < reqPermission && !ctx.Event.User.IsAdmin)
                     {
-                        ctx.Event.User.SendSystemMessage($"Comando não encontrado.");
+                        ctx.Event.User.SendSystemMessage($"Specified command not found.");
                         return;
                     }
                     ctx.Event.User.SendSystemMessage($"Help for <color=#00ff00ff>{ctx.Prefix}{aliases.First()}</color>");
@@ -42,13 +42,13 @@ namespace RPGMods.Commands
                 }
                 else
                 {
-                    ctx.Event.User.SendSystemMessage($"Comando não encontrado.");
+                    ctx.Event.User.SendSystemMessage($"Specified command not found.");
                     return;
                 }
             }
             catch
             {
-                ctx.Event.User.SendSystemMessage("Lista de todos os comandos:");
+                ctx.Event.User.SendSystemMessage("List of all commands:");
                 foreach (Type type in types)
                 {
                     List<string> aliases = type.GetAttributeValue((CommandAttribute cmd) => cmd.Aliases);

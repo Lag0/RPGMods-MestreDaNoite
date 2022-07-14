@@ -8,7 +8,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("spawnnpc, spn", "spawnnpc <Prefab Name/GUID> [<Amount>] [<Waypoint>]", "Gera um NPC para um waypoint criado anteriormente.")]
+    [Command("spawnnpc, spn", "spawnnpc <Prefab Name/GUID> [<Amount>] [<Waypoint>]", "Spawns a NPC to a previously created waypoint.")]
     public static class SpawnNPC
     {
         public static void Initialize(Context ctx)
@@ -39,7 +39,7 @@ namespace RPGMods.Commands
                     {
                         if (!Helper.SpawnAtPosition(ctx.Event.SenderUserEntity, GUID, count, new(pos.x, pos.z), 1, 2, 1800))
                         {
-                            Output.CustomErrorMessage(ctx, $"Falha ao spawnar: {name}");
+                            Output.CustomErrorMessage(ctx, $"Failed to spawn: {name}");
                             return;
                         }
                     }
@@ -47,11 +47,11 @@ namespace RPGMods.Commands
                     {
                         if (!Helper.SpawnAtPosition(ctx.Event.SenderUserEntity, name, count, new(pos.x, pos.z), 1, 2, 1800))
                         {
-                            Output.CustomErrorMessage(ctx, $"Não foi possível encontrar a unidade especificada: {name}");
+                            Output.CustomErrorMessage(ctx, $"Could not find specified unit: {name}");
                             return;
                         }
                     }
-                    ctx.Event.User.SendSystemMessage($"Spawnando {count} {name} at <{pos.x}, {pos.z}>");
+                    ctx.Event.User.SendSystemMessage($"Spawning {count} {name} at <{pos.x}, {pos.z}>");
                 }
                 else if (ctx.Args.Length >= 2 && !isParsable)
                 {
@@ -64,10 +64,10 @@ namespace RPGMods.Commands
                         Float2 wp = WPData.Location;
                         if (!Helper.SpawnAtPosition(ctx.Event.SenderUserEntity, name, count, new(wp.x, wp.y), 1, 2, 1800))
                         {
-                            Output.CustomErrorMessage(ctx, $"Não foi possível encontrar a unidade especificada: {name}");
+                            Output.CustomErrorMessage(ctx, $"Could not find specified unit: {name}");
                             return;
                         }
-                        ctx.Event.User.SendSystemMessage($"Spawnando {count} {name} at <{wp.x}, {wp.y}>");
+                        ctx.Event.User.SendSystemMessage($"Spawning {count} {name} at <{wp.x}, {wp.y}>");
                         return;
                     }
 
@@ -76,13 +76,13 @@ namespace RPGMods.Commands
                         Float2 wp = WPData_.Location;
                         if (!Helper.SpawnAtPosition(ctx.Event.SenderUserEntity, name, count, new(wp.x, wp.y), 1, 2, 1800))
                         {
-                            Output.CustomErrorMessage(ctx, $"Não foi possível encontrar a unidade especificada: {name}");
+                            Output.CustomErrorMessage(ctx, $"Could not find specified unit: {name}");
                             return;
                         }
-                        ctx.Event.User.SendSystemMessage($"Spawnando {count} {name} at <{wp.x}, {wp.y}>");
+                        ctx.Event.User.SendSystemMessage($"Spawning {count} {name} at <{wp.x}, {wp.y}>");
                         return;
                     }
-                    Output.CustomErrorMessage(ctx, "Este waypoint não existe.");
+                    Output.CustomErrorMessage(ctx, "This waypoint doesn't exist.");
                 }
             }
             else

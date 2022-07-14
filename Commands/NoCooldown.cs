@@ -8,7 +8,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("nocooldown, nocd", Usage = "nocooldown", Description = "Alterna cooldown instantâneo para todas as habilidades..")]
+    [Command("nocooldown, nocd", Usage = "nocooldown", Description = "Toggles instant cooldown for all abilities.")]
     public static class NoCooldown
     {
         public static void Initialize(Context ctx)
@@ -19,8 +19,8 @@ namespace RPGMods.Commands
             if (isNoCD) isNoCD = false;
             else isNoCD = true;
             UpdateCooldownList(ctx, isNoCD);
-            string p = isNoCD ? "Ativado" : "Desativado";
-            ctx.Event.User.SendSystemMessage($"No Cooldown está <color=#ffff00ff>{p}</color>");
+            string p = isNoCD ? "Activated" : "Deactivated";
+            ctx.Event.User.SendSystemMessage($"No Cooldown is now <color=#ffff00ff>{p}</color>");
             Helper.ApplyBuff(ctx.Event.SenderUserEntity, ctx.Event.SenderCharacterEntity, Database.buff.Buff_VBlood_Perk_Moose);
         }
 

@@ -8,7 +8,7 @@ using System;
 
 namespace RPGMods.Commands
 {
-    [Command("ban", Usage = "ban <playername> <days> <reason>", Description = "Verifica a penalidade de um jogador específico ou aplique uma punição. 0 = permanente")]
+    [Command("ban", Usage = "ban <playername> <days> <reason>", Description = "Check the status of specified player, or ban them. 0 is permanent.")]
     public static class BanUser
     {
         public static void Initialize(Context ctx)
@@ -24,20 +24,20 @@ namespace RPGMods.Commands
                     {
                         TimeSpan duration = banData_.BanUntil - DateTime.Now;
                         ctx.Event.User.SendSystemMessage($"Player:<color=#ffffffff> {args[0]}</color>");
-                        ctx.Event.User.SendSystemMessage($"Status:<color=#ffffffff> Banido</color> | Por:<color=#ffffffff> {banData_.BannedBy}</color>");
-                        ctx.Event.User.SendSystemMessage($"Duração:<color=#ffffffff> {Math.Round(duration.TotalDays)}</color> dia(s) [<color=#ffffffff>{banData_.BanUntil}</color>]");
-                        ctx.Event.User.SendSystemMessage($"Motivo:<color=#ffffffff> {banData_.Reason}</color>");
+                        ctx.Event.User.SendSystemMessage($"Status:<color=#ffffffff> Banned</color> | By:<color=#ffffffff> {banData_.BannedBy}</color>");
+                        ctx.Event.User.SendSystemMessage($"Duration:<color=#ffffffff> {Math.Round(duration.TotalDays)}</color> day(s) [<color=#ffffffff>{banData_.BanUntil}</color>]");
+                        ctx.Event.User.SendSystemMessage($"Reason:<color=#ffffffff> {banData_.Reason}</color>");
                         return;
                     }
                     else
                     {
-                        Output.CustomErrorMessage(ctx, "O jogador especificado não está banido.");
+                        Output.CustomErrorMessage(ctx, "Specified user is not banned.");
                         return;
                     }
                 }
                 else
                 {
-                    Output.CustomErrorMessage(ctx, "Não foi possível encontrar o jogador especificado.");
+                    Output.CustomErrorMessage(ctx, "Unable to find the specified player.");
                     return;
                 }
             }
@@ -68,26 +68,26 @@ namespace RPGMods.Commands
                 {
                     var user = ctx.Event.User;
                     Helper.KickPlayer(targetUserEntity);
-                    user.SendSystemMessage($"Player \"{name}\" foi Banido!.");
-                    user.SendSystemMessage($"Banido até:<color=#ffffffff> {banData.BanUntil}</color>");
-                    user.SendSystemMessage($"Motivop:<color=#ffffffff> {reason}</color>");
+                    user.SendSystemMessage($"Player \"{name}\" is now banned.");
+                    user.SendSystemMessage($"Banned Until:<color=#ffffffff> {banData.BanUntil}</color>");
+                    user.SendSystemMessage($"Reason:<color=#ffffffff> {reason}</color>");
                     return;
                 }
                 else
                 {
-                    Output.CustomErrorMessage(ctx, $"Falha ao banir o usuário \"{name}\".");
+                    Output.CustomErrorMessage(ctx, $"Failed to ban \"{name}\".");
                     return;
                 }
             }
             else
             {
-                Output.CustomErrorMessage(ctx, "Jogador especificado não encontrado.");
+                Output.CustomErrorMessage(ctx, "Specified player not found.");
                 return;
             }
         }
     }
 
-    [Command("unban", Usage = "unban <playername>", Description = "Desbanir um player específico")]
+    [Command("unban", Usage = "unban <playername>", Description = "Unban the specified player.")]
     public static class UnbanUser
     {
         public static void Initialize(Context ctx)
@@ -103,18 +103,18 @@ namespace RPGMods.Commands
             {
                 if (BanSystem.UnbanUser(targetUserEntity))
                 {
-                    ctx.Event.User.SendSystemMessage($"Player \"{args[0]}\" foi desbanido.");
+                    ctx.Event.User.SendSystemMessage($"Player \"{args[0]}\" is no longer banned.");
                     return;
                 }
                 else
                 {
-                    Output.CustomErrorMessage(ctx, $"O player específico não se encontra no banco de dados de banimentos");
+                    Output.CustomErrorMessage(ctx, $"Specified player does not exist in the ban database.");
                     return;
                 }
             }
             else
             {
-                Output.CustomErrorMessage(ctx, "Player não encontrado.");
+                Output.CustomErrorMessage(ctx, "Specified player not found.");
                 return;
             }
         }

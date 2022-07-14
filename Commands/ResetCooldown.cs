@@ -7,7 +7,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("resetcooldown, cd", Usage = "resetcooldown [<Nome do Player>]", Description = "Recarregue instantaneamente todas as habilidades e habilidades do jogador.")]
+    [Command("resetcooldown, cd", Usage = "resetcooldown [<Player Name>]", Description = "Instantly cooldown all ability & skills for the player.")]
     public static class ResetCooldown
     {
         public static void Initialize(Context ctx)
@@ -26,7 +26,7 @@ namespace RPGMods.Commands
                 }
                 else
                 {
-                    Utils.Output.CustomErrorMessage(ctx, $"Não foi possível encontrar o jogador especificado \"{name}\".");
+                    Utils.Output.CustomErrorMessage(ctx, $"Could not find the specified player \"{name}\".");
                     return;
                 }
             }
@@ -50,7 +50,7 @@ namespace RPGMods.Commands
                     entityManager.SetComponentData(abilityState, abilityCooldownState);
                 }
             }
-            ctx.Event.User.SendSystemMessage($"Player \"{CharName}\" cooldown resetado.");
+            ctx.Event.User.SendSystemMessage($"Player \"{CharName}\" cooldown resetted.");
         }
     }
 }

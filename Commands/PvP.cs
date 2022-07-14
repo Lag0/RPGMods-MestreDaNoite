@@ -7,7 +7,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("pvp", Usage = "pvp [<on|off>]", Description = "Alterna o modo PvP para você ou exibe suas estatísticas de PvP e os líderes atuais na escada.")]
+    [Command("pvp", Usage = "pvp [<on|off>]", Description = "Toggles PvP Mode for you or display your PvP statistics & the current leaders in the ladder.")]
     public static class PvP
     {
         public static void Initialize(Context ctx)
@@ -58,17 +58,17 @@ namespace RPGMods.Commands
                 {
                     if (!PvPSystem.isPvPToggleEnabled)
                     {
-                        Output.CustomErrorMessage(ctx, "o PvP esta ativo!");
+                        Output.CustomErrorMessage(ctx, "PvP toggling is not enabled!");
                         return;
                     }
                     if (Helper.IsPlayerInCombat(charEntity))
                     {
-                        Output.CustomErrorMessage(ctx, $"Incapaz de mudar o PvP Toggle, você está em combate!");
+                        Output.CustomErrorMessage(ctx, $"Unable to change PvP Toggle, you are in combat!");
                         return;
                     }
                     Helper.SetPvPShield(charEntity, isPvPShieldON);
-                    string s = isPvPShieldON ? "Ativado" : "Desativado";
-                    user.SendSystemMessage($"PvP foi {s}");
+                    string s = isPvPShieldON ? "OFF" : "ON";
+                    user.SendSystemMessage($"PvP is now {s}");
                     return;
                 }
                 else if (ctx.Args.Length == 2 && (ctx.Event.User.IsAdmin || PermissionSystem.PermissionCheck(ctx.Event.User.PlatformId, "pvp_args")))
@@ -79,12 +79,12 @@ namespace RPGMods.Commands
                         if (Helper.FindPlayer(name,false,out Entity targetChar, out Entity targetUser))
                         {
                             Helper.SetPvPShield(targetChar, isPvPShieldON);
-                            string s = isPvPShieldON ? "Desativado" : "Ativado";
-                            user.SendSystemMessage($"Player \"{name}\" PvP foi {s}");
+                            string s = isPvPShieldON ? "OFF" : "ON";
+                            user.SendSystemMessage($"Player \"{name}\" PvP is now {s}");
                         }
                         else
                         {
-                            Output.CustomErrorMessage(ctx, $"Não foi possível encontrar o jogador especificado!");
+                            Output.CustomErrorMessage(ctx, $"Unable to find the specified player!");
                         }
                     }
                     catch

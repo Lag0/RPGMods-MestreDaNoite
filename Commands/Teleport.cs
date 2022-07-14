@@ -9,7 +9,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("teleport, tp", "teleport <Nome>", "Teleporta você para outro jogador online dentro do seu clã.")]
+    [Command("teleport, tp", "teleport <Name>", "Teleport you to another online player within your clan.")]
     public static class Teleport
     {
         public static void Initialize(Context ctx)
@@ -21,7 +21,7 @@ namespace RPGMods.Commands
 
             if (Helper.IsPlayerInCombat(UserCharacter))
             {
-                Utils.Output.CustomErrorMessage(ctx, "Não foi possível usar o comando! Você está em combate!");
+                Utils.Output.CustomErrorMessage(ctx, "Unable to use command! You're in combat!");
                 return;
             }
             if (ctx.Args.Length < 1)
@@ -43,20 +43,20 @@ namespace RPGMods.Commands
             }
             else
             {
-                Utils.Output.CustomErrorMessage(ctx, "Jogador alvo não encontrado.");
+                Utils.Output.CustomErrorMessage(ctx, "Target player not found.");
                 return;
             }
 
             var serverGameManager = VWorld.Server.GetExistingSystem<ServerScriptMapper>()?._ServerGameManager;
             if (!serverGameManager._TeamChecker.IsAllies(user_TeamComponent, target_TeamComponent))
             {
-                Utils.Output.CustomErrorMessage(ctx, "Incapaz de se teletransportar para um jogador de outro clã!");
+                Utils.Output.CustomErrorMessage(ctx, "Unable to teleport to player from another Clan!");
                 return;
             }
 
             if (Helper.IsPlayerInCombat(TargetChar))
             {
-                Utils.Output.CustomErrorMessage(ctx, $"Incapaz de se teletransportar! Jogador \"{TargetName}\" está em combate!");
+                Utils.Output.CustomErrorMessage(ctx, $"Unable to teleport! Player \"{TargetName}\" is in combat!");
                 return;
             }
 

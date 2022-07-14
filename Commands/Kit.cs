@@ -10,7 +10,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("kit", "kit <nome>", "Fornece um conjunto de itens previamente especificado.")]
+    [Command("kit", "kit <Name>", "Gives you a previously specified set of items.")]
     public static class Kit
     {
         private static List<ItemKit> kits;
@@ -19,7 +19,7 @@ namespace RPGMods.Commands
         {
             if (ctx.Args.Length < 1)
             {
-                ctx.Event.User.SendSystemMessage($"Digite o nome do kit.");
+                ctx.Event.User.SendSystemMessage($"Kit name missing.");
                 return;
             }
 
@@ -32,11 +32,11 @@ namespace RPGMods.Commands
                 {
                     Helper.AddItemToInventory(ctx, new PrefabGUID(guid.Key), guid.Value);
                 }
-                ctx.Event.User.SendSystemMessage($"Você pegou o kit: <color=#ffff00ff>{CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name)}</color>");
+                ctx.Event.User.SendSystemMessage($"You got the kit: <color=#ffff00ff>{CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name)}</color>");
             }
             catch
             {
-                ctx.Event.User.SendSystemMessage($"Este kit não existe");
+                ctx.Event.User.SendSystemMessage($"Kit doesn't exist.");
                 return;
             }
         }
