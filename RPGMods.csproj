@@ -598,4 +598,8 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Commands\Stats.cs" />
+  </ItemGroup>
 </Project>
