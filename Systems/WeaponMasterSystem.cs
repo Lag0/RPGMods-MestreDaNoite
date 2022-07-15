@@ -230,13 +230,6 @@ namespace RPGMods.Systems
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
-                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
-                        {
-                            StatType = UnitStatType.MovementSpeed,
-                            Value = (float)(PMastery * 0.005),
-                            ModificationType = ModificationType.Add,
-                            Id = ModificationId.NewId(0)
-                        });
                         break;
                     case WeaponType.Mace:
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
@@ -309,13 +302,6 @@ namespace RPGMods.Systems
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
-                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
-                        {
-                            StatType = UnitStatType.MovementSpeed,
-                            Value = (float)(PMastery * 0.005), //-- 0.005 = 0.5 of MovementSpeed Increase (12.5%)
-                            ModificationType = ModificationType.Add,
-                            Id = ModificationId.NewId(0)
-                        });
                         break;
                     case WeaponType.Spear:
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
@@ -382,15 +368,15 @@ namespace RPGMods.Systems
                         });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
-                            StatType = UnitStatType.MovementSpeed,
-                            Value = (float)(PMastery * 0.0075), //-- 0.0075 = 0.75 of MovementSpeed Increase (18.75%)
+                            StatType = UnitStatType.MaxHealth,
+                            Value = (float)(PMastery * -0.5), //-- 0.5 = 50 of MaxHealth Decrease
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
-                            StatType = UnitStatType.MaxHealth,
-                            Value = (float)(PMastery * -0.5), //-- 0.5 = 50 of MaxHealth Decrease
+                            StatType = UnitStatType.PhysicalPower,
+                            Value = (float)(PMastery * 0.125), //-- 0.5 = 50 of MaxHealth Decrease
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
