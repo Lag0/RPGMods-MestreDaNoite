@@ -5,7 +5,8 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("blood, b", Usage = "blood <Type> [<Quality>] [<Value>]", Description = "Sets your current Blood Type, Quality and Value")]
+    [Command("blood, b", Usage = "blood <Type> [<Quality>] [<Value>]",
+        Description = "Sets your current Blood Type, Quality and Value")]
     public static class BloodSet
     {
         public static void Initialize(Context ctx)
@@ -25,6 +26,7 @@ namespace RPGMods.Commands
                         if (float.Parse(ctx.Args[1]) < 0) quality = 0;
                         if (float.Parse(ctx.Args[1]) > 100) quality = 100;
                     }
+
                     if (ctx.Args.Length >= 3) value = int.Parse(ctx.Args[2]);
 
                     var BloodEvent = new ChangeBloodDebugEvent()
@@ -33,8 +35,10 @@ namespace RPGMods.Commands
                         Quality = quality,
                         Source = type
                     };
-                    VWorld.Server.GetExistingSystem<DebugEventsSystem>().ChangeBloodEvent(ctx.Event.User.Index, ref BloodEvent);
-                    ctx.Event.User.SendSystemMessage($"Changed Blood Type to <color=#ffff00ff>{ctx.Args[0]}</color> with <color=#ffff00ff>{quality}</color>% quality");
+                    VWorld.Server.GetExistingSystem<DebugEventsSystem>()
+                        .ChangeBloodEvent(ctx.Event.User.Index, ref BloodEvent);
+                    ctx.Event.User.SendSystemMessage(
+                        $"Changed Blood Type to <color=#ffff00ff>{ctx.Args[0]}</color> with <color=#ffff00ff>{quality}</color>% quality");
                 }
                 catch
                 {
@@ -48,4 +52,4 @@ namespace RPGMods.Commands
             }
         }
     }
-}
+}              

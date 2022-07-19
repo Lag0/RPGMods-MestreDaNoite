@@ -2,18 +2,13 @@
 using ProjectM.Gameplay.Scripting;
 using ProjectM.Network;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Runtime.InteropServices;
-using System.Text.Json;
-using UnhollowerRuntimeLib;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using Wetstone.API;
-using System.Reflection;
 using static RPGMods.Utils.Database;
 
 namespace RPGMods.Utils
@@ -149,6 +144,22 @@ namespace RPGMods.Utils
             else if (name.Equals("scholar")) type = new PrefabGUID(-700632469);
             else if (name.Equals("creature")) type = new PrefabGUID(1897056612);
             else if (name.Equals("worker")) type = new PrefabGUID(-1342764880);
+            else type = new PrefabGUID();
+            return type;
+        }
+        
+        public static PrefabGUID GetBuffFromName (string name)
+        {
+            PrefabGUID type;
+            name = name.ToLower();
+            if (name.Equals("solarus")) type = buff.PaladinBuff;
+            else if (name.Equals("manticore")) type = buff.ManticoreBuff;
+            else if (name.Equals("behemoth")) type = buff.BehemothBuff;
+            else if (name.Equals("holy")) type = buff.HolyNuke;
+            else if (name.Equals("pig")) type = buff.Pig_Transform_Debuff;
+            else if (name.Equals("bat")) type = buff.BatForm;
+            else if (name.Equals("wolf")) type = buff.WolfStygian;
+            else if (name.Equals("undead")) type = buff.AB_Undead_BishopOfShadows_ShadowSoldier_Minion_Buff;
             else type = new PrefabGUID();
             return type;
         }

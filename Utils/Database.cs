@@ -453,9 +453,9 @@ namespace RPGMods.Utils
             public static PrefabGUID AB_Undead_BishopOfShadows_ShadowSoldier_Minion_Buff = new PrefabGUID(450215391);   //-- Impair cast & movement
 
             //-- Relic Buff
-            //[-238197495]          AB_Interact_UseRelic_Manticore_Buff
-            //[-1161197991]		    AB_Interact_UseRelic_Paladin_Buff
-            //[-1703886455]		    AB_Interact_UseRelic_Behemoth_Buff
+            public static PrefabGUID ManticoreBuff = new PrefabGUID(-238197495);        //AB_Interact_UseRelic_Manticore_Buff
+            public static PrefabGUID PaladinBuff = new PrefabGUID(-1161197991);         //AB_Interact_UseRelic_Paladin_Buff
+            public static PrefabGUID BehemothBuff = new PrefabGUID(-1703886455);         //AB_Interact_UseRelic_Behemoth_Buff
 
             //-- Fun
             public static PrefabGUID HolyNuke = new PrefabGUID(-1807398295);
@@ -466,7 +466,7 @@ namespace RPGMods.Utils
 
 
             //-- Possible Buff use
-            public static PrefabGUID EquipBuff_Chest_Base = new PrefabGUID(1872694456);         //-- Hmm... not sure what to do with this right now...
+            public static PrefabGUID EquipBuff_Chest_Base = new PrefabGUID(1872694456);          //-- Hmm... not sure what to do with this right now...
             public static PrefabGUID Buff_VBlood_Perk_ProgTest = new PrefabGUID(1614409699);    //-- What does this do??
             public static PrefabGUID AB_BloodBuff_VBlood_0 = new PrefabGUID(20081801);          //-- Does it do anything negative...? How can i check for this, seems like it's a total blank o.o
 
