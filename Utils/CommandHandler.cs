@@ -50,7 +50,7 @@ namespace RPGMods.Utils
                 {
                     if (!PermissionSystem.PermissionCheck(ev.User.PlatformId, primary))
                     {
-                        ev.User.SendSystemMessage($"<color=#ff0000ff>You do not have the required permissions to use that.</color>");
+                        ev.User.SendSystemMessage($"<color=#ff0000ff>Você não tem permissão para usar isso.</color>");
                         return;
                     }
                 }
@@ -59,7 +59,7 @@ namespace RPGMods.Utils
                 if (getCurrentTime < last_Command && !ev.User.IsAdmin)
                 {
                     int wait = (int)Math.Ceiling(last_Command - getCurrentTime);
-                    ev.User.SendSystemMessage($"<color=#ff0000ff>Please wait for {wait} second(s) before sending another command.</color>");
+                    ev.User.SendSystemMessage($"<color=#ff0000ff>Aguarde {wait} segundo(s) antes de usar outro comando.</color>");
                     return;
                 }
                 Cache.command_Cooldown[ev.User.PlatformId] = getCurrentTime + delay_Cooldown;

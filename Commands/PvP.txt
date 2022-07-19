@@ -19,11 +19,6 @@ namespace RPGMods.Commands
             var charEntity = ctx.Event.SenderCharacterEntity;
             var CharName = user.CharacterName.ToString();
             var SteamID = user.PlatformId;
-            if (ctx.Args.Length == 0)
-            {
-                Output.InvalidArguments(ctx);
-                return;
-            }
             if (ctx.Args.Length > 0)
             {
                 var isPvPShieldON = false;

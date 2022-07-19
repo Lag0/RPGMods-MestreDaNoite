@@ -7,8 +7,8 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("leaderboard, lb", Usage = "leaderboard / lb ",
-        Description = "Show the current leaderboard ranking.", ReqPermission = 0)]
+    [Command("leaderboard, lb, pvp", Usage = "leaderboard / lb / pvp ",
+        Description = "Mostra o rank atual!", ReqPermission = 0)]
     public static class Leaderboard
     {
         public static void Initialize(Context ctx)
@@ -36,7 +36,7 @@ namespace RPGMods.Commands
         }
     }
 
-    [Command("status, stats", Usage = "status / stats", Description = "Display your personal status.", ReqPermission = 0)]
+    [Command("status, stats", Usage = "status / stats", Description = "Mostra suas estáticas pessoais", ReqPermission = 0)]
     public static class Stats
     {
         public static void Initialize(Context ctx)
@@ -51,10 +51,10 @@ namespace RPGMods.Commands
 
             user.SendSystemMessage($"<b>-- <color=#FFFFFFFF>{charName}</color> --</b>");
             user.SendSystemMessage($"K/D: <color=#FFFFFFFF>{pvpKd:0.0}</color>");
-            user.SendSystemMessage($"Kills: <color=#75FF33FF>{pvpKills}</color>");
-            user.SendSystemMessage($"Deaths: <color=#F00000FF>{pvpDeaths}</color>");
+            user.SendSystemMessage($"Abates: <color=#75FF33FF>{pvpKills}</color>");
+            user.SendSystemMessage($"Mortes: <color=#F00000FF>{pvpDeaths}</color>");
             user.SendSystemMessage(
-                $"You are No. <color=#FFFFFFFF><b>{(PvPSystem.GetTopKillList().Keys.ToList<ulong>().IndexOf(ctx.Event.User.PlatformId) + 1)}</b></color> in the leaderboard!");
+                $"Você é o numero <color=#FFFFFFFF><b>{(PvPSystem.GetTopKillList().Keys.ToList<ulong>().IndexOf(ctx.Event.User.PlatformId) + 1)}</b></color> do rank!");
         }
     }
 }

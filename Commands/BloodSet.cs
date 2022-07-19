@@ -5,7 +5,7 @@ using Wetstone.API;
 
 namespace RPGMods.Commands
 {
-    [Command("blood", Usage = "blood <Type> [<Quality>] [<Value>]", Description = "Sets your current Blood Type, Quality and Value")]
+    [Command("blood, b", Usage = "blood <Type> [<Quality>] [<Value>]", Description = "Sets your current Blood Type, Quality and Value")]
     public static class BloodSet
     {
         public static void Initialize(Context ctx)

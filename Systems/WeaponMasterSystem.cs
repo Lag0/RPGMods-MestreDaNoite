@@ -290,15 +290,15 @@ namespace RPGMods.Systems
                     case WeaponType.Sword:
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
-                            StatType = UnitStatType.SpellPower,
-                            Value = (float)(PMastery * 0.10), //-- 0.125 = 12.5 Spell Power increase
+                            StatType = UnitStatType.DamageVsPlayerVampires,
+                            Value = (float)(PMastery * 0.005), //-- 0.005 = 50 of MaxHealth Decrease
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.10), //-- 0.125 = 12.5 Attack Power increase
+                            Value = (float)(PMastery * 0.15), //-- 0.15 = 15.0 Attack Power increase
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -307,7 +307,7 @@ namespace RPGMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.25), //-- 0.25 = 25.0 Attack Power increase
+                            Value = (float)(PMastery * 0.20), //-- 0.20 = 20.0 Attack Power increase
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -377,6 +377,13 @@ namespace RPGMods.Systems
                         {
                             StatType = UnitStatType.PhysicalPower,
                             Value = (float)(PMastery * 0.125), //-- 0.5 = 50 of MaxHealth Decrease
+                            ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        {
+                            StatType = UnitStatType.DamageVsPlayerVampires,
+                            Value = (float)(PMastery * 0.005), //-- 0.005 = 50 of MaxHealth Decrease
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });

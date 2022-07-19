@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text.Json;
 using Unity.Entities;
 using Wetstone.API;
+using Wetstone.Hooks;
 
 namespace RPGMods.Systems
 {
@@ -95,19 +96,24 @@ namespace RPGMods.Systems
             var victim_name = victim_user.CharacterName.ToString();
             var victim_id = victim_user.PlatformId;
 
-            victim_user.SendSystemMessage($"<color=#c90e21ff>You've been killed by \"{killer_name}\"</color>");
+            victim_user.SendSystemMessage($"Você foi morto por <color=#c90e21ff>\"{killer_name}\"</color>");
 
             Database.pvpkills.TryGetValue(killer_id, out var KillerKills);
             Database.pvpdeath.TryGetValue(victim_id, out var VictimDeath);
 
-            Database.pvpkills[killer_id] = KillerKills + 1;
-            Database.pvpdeath[victim_id] = VictimDeath + 1;
+            if(PermissionSystem.GetUserPermission(killer_id) < 60 || PermissionSystem.GetUserPermission(victim_id) < 60)
+            {
+                Database.pvpkills[killer_id] = KillerKills + 1;
+                Database.pvpdeath[victim_id] = VictimDeath + 1;
+            }
+
 
             //-- Update K/D
             UpdateKD(killer_id, victim_id);
 
-            //-- Announce Kills
-            if (announce_kills) ServerChatUtils.SendSystemMessageToAllClients(em, $"Vampire \"{killer_name}\" has killed \"{victim_name}\"!");
+            //-- Announce Kills only if enable and if the killer is not staff
+            if (announce_kills && PermissionSystem.GetUserPermission(killer_id) < 60) ServerChatUtils.SendSystemMessageToAllClients(em,
+                $"<color=#47ff18>{killer_name}</color> empalou <color=#ff003e>{victim_name}</color>!");
         }
 
         public static Dictionary<ulong, int> Kills = Database.pvpkills;

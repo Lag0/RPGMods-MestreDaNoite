@@ -105,8 +105,8 @@ namespace RPGMods.Commands
                 }
 
                 ctx.Event.User.SendSystemMessage("------------------ <color=#ffffffff>Maestria das Armas</color> ------------------");
-                ctx.Event.User.SendSystemMessage($"Espada:<color=#ffffffff> {(double)MasteryData.Sword * 0.001}%</color> (AD <color=#75FF33FF>10</color>, AP <color=#75FF33FF>10</color>)");
-                ctx.Event.User.SendSystemMessage($"Lança:<color=#ffffffff> {(double)MasteryData.Spear * 0.001}%</color> (AD <color=#75FF33FF>25</color>)");
+                ctx.Event.User.SendSystemMessage($"Espada:<color=#ffffffff> {(double)MasteryData.Sword * 0.001}%</color> (AD <color=#75FF33FF>15</color>, PENETRAÇÃO <color=#75FF33FF>5%</color>)");
+                ctx.Event.User.SendSystemMessage($"Lança:<color=#ffffffff> {(double)MasteryData.Spear * 0.001}%</color> (AD <color=#75FF33FF>20</color>)");
                 ctx.Event.User.SendSystemMessage($"Machado:<color=#ffffffff> {(double)MasteryData.Axes * 0.001}%</color> (AD <color=#75FF33FF>15</color>, HP <color=#75FF33FF>50</color>)");
                 ctx.Event.User.SendSystemMessage($"Foiçe:<color=#ffffffff> {(double)MasteryData.Scythe * 0.001}%</color> (AP <color=#75FF33FF>10</color>, CRIT <color=#75FF33FF>30%</color>, CD <color=#75FF33FF>25%</color>, HP <color=#F00000FF>100</color>)");
                 ctx.Event.User.SendSystemMessage($"Adagas:<color=#ffffffff> {(double)MasteryData.Slashers * 0.001}%</color> (CRIT <color=#75FF33FF>100%</color>, AD <color=#75FF33FF>12.5</color>, HP <color=#F00000FF>50</color>)");
