@@ -157,9 +157,16 @@ namespace RPGMods.Utils
             else if (name.Equals("behemoth")) type = buff.BehemothBuff;
             else if (name.Equals("holy")) type = buff.HolyNuke;
             else if (name.Equals("pig")) type = buff.Pig_Transform_Debuff;
-            else if (name.Equals("bat")) type = buff.BatForm;
-            else if (name.Equals("wolf")) type = buff.WolfStygian;
             else if (name.Equals("undead")) type = buff.AB_Undead_BishopOfShadows_ShadowSoldier_Minion_Buff;
+            else if (name.Equals("admin")) type = buff.Admin_Observe_Ghost_Buff;
+            else if (name.Equals("wolf")) type = buff.WolfStygian;
+            else if (name.Equals("bat")) type = buff.BatForm;
+            else if (name.Equals("bear")) type = buff.BearStygian;
+            else if (name.Equals("normal")) type = buff.NormalForm;
+            else if (name.Equals("golem")) type = buff.SiegeGolem_T02;
+            else if (name.Equals("heal")) type = buff.AB_Town_Priest_HealBomb_Buff;
+            
+            
             else type = new PrefabGUID();
             return type;
         }

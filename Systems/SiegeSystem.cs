@@ -1,8 +1,5 @@
 ﻿using ProjectM;
 using RPGMods.Utils;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Unity.Entities;
 using Wetstone.API;
 

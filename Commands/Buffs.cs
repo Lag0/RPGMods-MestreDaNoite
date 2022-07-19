@@ -1,6 +1,4 @@
-﻿using System;
-using ProjectM;
-using ProjectM.Network;
+﻿using ProjectM;
 using RPGMods.Utils;
 using Wetstone.API;
 
@@ -19,17 +17,17 @@ namespace RPGMods.Commands
 
                     if (ctx.Args.Length >= 1) type = Helper.GetBuffFromName(ctx.Args[0]);
                     
-                    ctx.Event.User.SendSystemMessage($"<color=#ffff00ff>Buff Setado!!</color>");
                     Helper.ApplyBuff(ctx.Event.SenderUserEntity, ctx.Event.SenderCharacterEntity, type);
+                    ctx.Event.User.SendSystemMessage($"<color=#ffff00ff>Buff Setado!!</color>");
                 }
                 catch
                 {
-                    Utils.Output.InvalidArguments(ctx);
+                    Output.InvalidArguments(ctx);
                 }
             }
             else
             {
-                Utils.Output.MissingArguments(ctx);
+                Output.MissingArguments(ctx);
             }
         }
     }

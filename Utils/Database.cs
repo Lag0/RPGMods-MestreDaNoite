@@ -428,6 +428,7 @@ namespace RPGMods.Utils
             public static PrefabGUID BatForm = new PrefabGUID(1205505492);
             public static PrefabGUID NormalForm = new PrefabGUID(1352541204);
             public static PrefabGUID RatForm = new PrefabGUID(902394170);
+            public static PrefabGUID BearStygian = new PrefabGUID(-631049507);
 
             public static PrefabGUID DownedBuff = new PrefabGUID(-1992158531);
             public static PrefabGUID BloodSight = new PrefabGUID(1199823151);
@@ -471,14 +472,14 @@ namespace RPGMods.Utils
             public static PrefabGUID AB_BloodBuff_VBlood_0 = new PrefabGUID(20081801);          //-- Does it do anything negative...? How can i check for this, seems like it's a total blank o.o
 
             //-- Just putting it here for no reason at all...
-            //public static PrefabGUID Admin_Observe_Ghost_Buff = new PrefabGUID(77473184);       //-- Not sure what to do with it
+            public static PrefabGUID Admin_Observe_Ghost_Buff = new PrefabGUID(77473184);       //-- Not sure what to do with it
             //[1258181143]		    AB_Undead_Priest_Elite_RaiseHorde_Minion_Buff
             //[1502566434]		    AB_Manticore_Flame_Buff_UNUSED
-            //[-1133938228]		    AB_Town_Priest_HealBomb_Buff        //-- Good Heal Effect
-            //[-225445080]          AB_Nun_AoE_ApplyLight_Buff          //-- Low Healing Effect
-            //[-2115732274]		    AB_Manticore_Flying_Buff
 
-            //[-474441982]		    Buff_General_Teleport_Travel        //-- Usefull for imprissoning someone?
+            public static PrefabGUID AB_Manticore_Flying_Buff = new PrefabGUID(-2115732274);
+            public static PrefabGUID AB_Town_Priest_HealBomb_Buff = new PrefabGUID(-1133938228); //-- Good Heal Effect
+            public static PrefabGUID AB_Nun_AoE_ApplyLight_Buff = new PrefabGUID(-225445080); //-- Low Healing Effect
+            public static PrefabGUID Buff_General_Teleport_Travel = new PrefabGUID(-474441982); //-- Usefull for imprissoning someone?
 
 
         }

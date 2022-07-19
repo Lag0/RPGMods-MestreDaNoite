@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using Cpp2IL.Core.Analysis.Actions.x86.Important;
+using ProjectM.UI;
 using Unity.Entities;
 using Wetstone.API;
 using RPGMods.Utils;
+using Unity.Properties.Generated;
 
 namespace RPGMods.Systems
 {
@@ -283,6 +285,7 @@ namespace RPGMods.Systems
         {
             var WeaponType = GetWeaponType(Owner);
             var isMastered = ConvertMastery(SteamID, WeaponType, out var PMastery, out var SMastery);
+            
             if (isMastered)
             {
                 switch (WeaponType)
