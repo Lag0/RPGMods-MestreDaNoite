@@ -76,11 +76,13 @@ namespace RPGMods
 
         private ConfigEntry<bool> EnableWeaponMaster;
         private ConfigEntry<bool> EnableWeaponMasterDecay;
+        private ConfigEntry<bool> EnableBoostTime;
         private ConfigEntry<float> WeaponMasterMultiplier;
         private ConfigEntry<int> WeaponDecayInterval;
         private ConfigEntry<int> WeaponMaxMastery;
         private ConfigEntry<float> WeaponMastery_VBloodMultiplier;
         private ConfigEntry<float> WeaponMastery_NonVBloodMultiplier;
+        private ConfigEntry<int> WeaponMastery_BoostXP;
         private ConfigEntry<int> Offline_Weapon_MasteryDecayValue;
         private ConfigEntry<int> MasteryCombatTick;
         private ConfigEntry<int> MasteryMaxCombatTicks;
@@ -145,12 +147,14 @@ namespace RPGMods
 
             EnableWeaponMaster = Config.Bind("Mastery", "Enable Weapon Mastery", true, "Enable/disable the weapon mastery system.");
             EnableWeaponMasterDecay = Config.Bind("Mastery", "Enable Mastery Decay", true, "Enable/disable the decay of weapon mastery when the user is offline.");
+            EnableBoostTime = Config.Bind("Mastery", "Enable Weapon Mastery Boost Time", true, "Enable/disable the boost time for weapon mastery system.");
             WeaponMaxMastery = Config.Bind("Mastery", "Max Mastery Value", 100000, "Configure the maximum mastery the user can atain. (100000 is 100%)");
             MasteryCombatTick = Config.Bind("Mastery", "Mastery Value/Combat Ticks", 5, "Configure the amount of mastery gained per combat ticks. (5 -> 0.005%)");
             MasteryMaxCombatTicks = Config.Bind("Mastery", "Max Combat Ticks", 12, "Mastery will no longer increase after this many ticks is reached in combat. (1 tick = 5 seconds)");
             WeaponMasterMultiplier = Config.Bind("Mastery", "Mastery Multiplier", 1f, "Multiply the gained mastery value by this amount.");
             WeaponMastery_VBloodMultiplier = Config.Bind("Mastery", "VBlood Mastery Multiplier", 15f, "Multiply Mastery gained from VBlood kill.");
             WeaponMastery_NonVBloodMultiplier = Config.Bind("Mastery", "Non VBlood Mastery Multiplier", 1f, "Multiply Mastery gained from non VBlood kill.");
+            WeaponMastery_BoostXP = Config.Bind("Mastery", "Weapon Mastery Multiplier Boost Value", 1, "Multiply Mastery gained from the boost time.");
             WeaponDecayInterval = Config.Bind("Mastery", "Decay Interval", 60, "Every amount of seconds the user is offline by the configured value will translate as 1 decay tick.");
             Offline_Weapon_MasteryDecayValue = Config.Bind("Mastery", "Decay Value", 1, "Mastery will decay by this amount for every decay tick.(1 -> 0.001%)");
 
@@ -242,11 +246,13 @@ namespace RPGMods
 
             WeaponMasterSystem.isMasteryEnabled = EnableWeaponMaster.Value;
             WeaponMasterSystem.isDecaySystemEnabled = EnableWeaponMasterDecay.Value;
+            WeaponMasterSystem.isBoostTime = EnableBoostTime.Value;
             WeaponMasterSystem.Offline_DecayValue = Offline_Weapon_MasteryDecayValue.Value;
             WeaponMasterSystem.DecayInterval = WeaponDecayInterval.Value;
             WeaponMasterSystem.VBloodMultiplier = WeaponMastery_VBloodMultiplier.Value;
             WeaponMasterSystem.NonVBloodMultiplier = WeaponMastery_NonVBloodMultiplier.Value;
             WeaponMasterSystem.MasteryMultiplier = WeaponMasterMultiplier.Value;
+            WeaponMasterSystem.BoostMultiplier = WeaponMastery_BoostXP.Value;
             WeaponMasterSystem.MaxMastery = WeaponMaxMastery.Value;
             WeaponMasterSystem.MasteryCombatTick = MasteryCombatTick.Value;
             WeaponMasterSystem.MaxCombatTick = MasteryMaxCombatTicks.Value;

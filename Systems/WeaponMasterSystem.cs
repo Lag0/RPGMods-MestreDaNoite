@@ -24,6 +24,8 @@ namespace RPGMods.Systems
         public static int MaxMastery = 100000;
         public static float VBloodMultiplier = 15;
         public static float NonVBloodMultiplier = 1;
+        public static bool isBoostTime = true;
+        public static int BoostMultiplier = 1;
 
         private static PrefabGUID vBloodType = new PrefabGUID(1557174542);
 
@@ -48,16 +50,6 @@ namespace RPGMods.Systems
             if (KillerGearScore > VictimGearScore) MasteryValue = (int)VictimStats.PhysicalPower;
             else MasteryValue = (int)((int)VictimStats.PhysicalPower + (VictimGearScore - KillerGearScore));
 
-            TimeSpan start = new TimeSpan(18, 0, 0); //18 o'clock
-            TimeSpan end = new TimeSpan(23, 0, 0);//23 o'clock
-            TimeSpan now = DateTime.Now.TimeOfDay;
-
-            if ((now > start) && (now < end))
-            {
-                MasteryValue = (int)(MasteryValue * (rand.Next(10, 100) * 0.02));
-            }
-
-            MasteryValue = (int)(MasteryValue * (rand.Next(10, 100) * 0.01));
 
             bool isVBlood;
             if (em.HasComponent<BloodConsumeSource>(Victim))
@@ -70,6 +62,17 @@ namespace RPGMods.Systems
                 isVBlood = false;
             }
 
+            TimeSpan start = new TimeSpan(18, 0, 0); //18 o'clock
+            TimeSpan end = new TimeSpan(22, 0, 0);//23 o'clock
+            TimeSpan now = DateTime.Now.TimeOfDay;
+
+            MasteryValue = (int)(MasteryValue * (rand.Next(10, 100) * 0.01));
+            
+            if ((now > start) && (now < end) && isBoostTime)
+            {
+                MasteryValue = (int)(MasteryValue * BoostMultiplier);
+            }
+            
             MasteryValue = isVBlood ? (int)(MasteryValue * VBloodMultiplier) : (int)(MasteryValue * NonVBloodMultiplier);
 
             if (em.HasComponent<PlayerCharacter>(Victim))
