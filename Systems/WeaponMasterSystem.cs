@@ -4,12 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
-using Cpp2IL.Core.Analysis.Actions.x86.Important;
-using ProjectM.UI;
 using Unity.Entities;
 using Wetstone.API;
 using RPGMods.Utils;
-using Unity.Properties.Generated;
 
 namespace RPGMods.Systems
 {
@@ -26,6 +23,7 @@ namespace RPGMods.Systems
         public static int Offline_DecayValue = 1;
         public static int MaxMastery = 100000;
         public static float VBloodMultiplier = 15;
+        public static float NonVBloodMultiplier = 1;
 
         private static PrefabGUID vBloodType = new PrefabGUID(1557174542);
 
@@ -72,7 +70,7 @@ namespace RPGMods.Systems
                 isVBlood = false;
             }
 
-            if (isVBlood) MasteryValue = (int)(MasteryValue * VBloodMultiplier);
+            MasteryValue = isVBlood ? (int)(MasteryValue * VBloodMultiplier) : (int)(MasteryValue * NonVBloodMultiplier);
 
             if (em.HasComponent<PlayerCharacter>(Victim))
             {
@@ -85,7 +83,7 @@ namespace RPGMods.Systems
                 {
                     MasteryValue *= (int)(1 + (BonusMasteryVictim * 0.03));
                 }
-                if (GearScoreVictim == GearScoreKiller)
+                if (Math.Abs(GearScoreVictim - GearScoreKiller) < 0.1)
                 {
                     MasteryValue *= (int)(1 + (BonusMasteryVictim * 0.02));
                 }
