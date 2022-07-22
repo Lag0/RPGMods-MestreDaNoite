@@ -1,21 +1,46 @@
 ﻿using ProjectM;
 using ProjectM.Network;
 using MDNMods.Utils;
-using Unity.Collections;
 using Unity.Entities;
 using Wetstone.API;
 
 namespace MDNMods.Commands
 {
-    [Command("resetcooldown, cd", Usage = "resetcooldown [<Player Name>]", Description = "Instantly cooldown all ability & skills for the player.")]
-    public static class ResetCooldown
+    [Command("ready, r", Usage = "ready [<Player Name>]", Description = "Set your status ready for pvp")]
+    public static class Ready
     {
+        private static EntityManager entityManager = VWorld.Server.EntityManager;
+        public static bool status_ready = true;
+
+        public static void BuffReceiver(Entity buffEntity)
+        {
+            PrefabGUID GUID = entityManager.GetComponentData<PrefabGUID>(buffEntity);
+            if (GUID.Equals(Database.buff.LevelUp_Buff))
+            {
+                Entity Owner = entityManager.GetComponentData<EntityOwner>(buffEntity).Owner;
+                if (entityManager.HasComponent<PlayerCharacter>(Owner))
+                {
+                    LifeTime lifetime = entityManager.GetComponentData<LifeTime>(buffEntity);
+                    lifetime.Duration = 0.0001f;
+                    entityManager.SetComponentData(buffEntity, lifetime);
+                }
+            }
+        }
         public static void Initialize(Context ctx)
         {
             Entity PlayerCharacter = ctx.Event.SenderCharacterEntity;
             string CharName = ctx.Event.User.CharacterName.ToString();
             EntityManager entityManager = VWorld.Server.EntityManager;
-
+            var component = ctx.EntityManager.GetComponentData<ProjectM.Health>(ctx.Event.SenderCharacterEntity);
+            var UserIndex = ctx.Event.User.Index;
+            int Value = 100;
+            
+            if (Helper.IsPlayerInCombat(PlayerCharacter))
+            {
+                Output.CustomErrorMessage(ctx, "Não pode usar o comando! Você está em combate!");
+                return;
+            }
+            
             if (ctx.Args.Length >= 1)
             {
                 string name = string.Join(' ', ctx.Args);
@@ -49,8 +74,14 @@ namespace MDNMods.Commands
                     abilityCooldownState.CooldownEndTime = 0;
                     entityManager.SetComponentData(abilityState, abilityCooldownState);
                 }
+                float restoreHp = ((component.MaxHealth / 100) * Value) - component.Value;
+                var HealthEvent = new ChangeHealthDebugEvent()
+                {
+                    Amount = (int)restoreHp
+                };
+                VWorld.Server.GetExistingSystem<DebugEventsSystem>().ChangeHealthEvent(UserIndex, ref HealthEvent);
             }
-            ctx.Event.User.SendSystemMessage($"Player \"{CharName}\" cooldown resetted.");
+            if (status_ready) Helper.ApplyBuff(ctx.Event.SenderUserEntity, ctx.Event.SenderCharacterEntity, Database.buff.AB_Nun_AoE_ApplyLight_Buff);
         }
     }
 }

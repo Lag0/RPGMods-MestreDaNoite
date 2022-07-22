@@ -1,9 +1,9 @@
 ﻿using ProjectM;
 using ProjectM.Network;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("blood, b", Usage = "blood <Type> [<Quality>] [<Value>]",
         Description = "Sets your current Blood Type, Quality and Value")]

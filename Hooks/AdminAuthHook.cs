@@ -1,8 +1,8 @@
 ﻿using ProjectM;
 using HarmonyLib;
-using RPGMods.Systems;
+using MDNMods.Systems;
 
-namespace RPGMods.Hooks
+namespace MDNMods.Hooks
 {
     [HarmonyPatch(typeof(AdminAuthSystem), nameof(AdminAuthSystem.IsAdmin))]
     public static class IsAdmin_Patch

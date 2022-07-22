@@ -1,9 +1,9 @@
 ﻿using ProjectM;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using Unity.Entities;
 using Wetstone.API;
 
-namespace RPGMods.Systems
+namespace MDNMods.Systems
 {
     public static class SiegeSystem
     {

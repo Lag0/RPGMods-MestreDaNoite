@@ -1,9 +1,9 @@
-﻿using RPGMods.Utils;
+﻿using MDNMods.Utils;
 using ProjectM;
 using Wetstone.API;
 using Unity.Entities;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("inventory, i", Usage = "inventory", Description = "Limpa todo seu inventario!", ReqPermission = 100)]
     public static class InventoryClear

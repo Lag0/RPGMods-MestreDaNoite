@@ -6,9 +6,9 @@ using System.IO;
 using System.Text.Json;
 using Unity.Entities;
 using Wetstone.API;
-using RPGMods.Utils;
+using MDNMods.Utils;
 
-namespace RPGMods.Systems
+namespace MDNMods.Systems
 {
     public class WeaponMasterSystem
     {
@@ -62,8 +62,8 @@ namespace RPGMods.Systems
                 isVBlood = false;
             }
 
-            TimeSpan start = new TimeSpan(18, 0, 0); //18 o'clock
-            TimeSpan end = new TimeSpan(22, 0, 0);//23 o'clock
+            TimeSpan start = new TimeSpan(17, 0, 0); //18 o'clock
+            TimeSpan end = new TimeSpan(23, 0, 0);//23 o'clock
             TimeSpan now = DateTime.Now.TimeOfDay;
 
             MasteryValue = (int)(MasteryValue * (rand.Next(10, 100) * 0.01));
@@ -618,19 +618,19 @@ namespace RPGMods.Systems
 
         public static void SaveWeaponMastery()
         {
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/weapon_mastery.json", JsonSerializer.Serialize(Database.player_weaponmastery, Database.JSON_options));
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/mastery_decay.json", JsonSerializer.Serialize(Database.player_decaymastery_logout, Database.JSON_options));
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/player_log_mastery.json", JsonSerializer.Serialize(Database.player_log_mastery, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/weapon_mastery.json", JsonSerializer.Serialize(Database.player_weaponmastery, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/mastery_decay.json", JsonSerializer.Serialize(Database.player_decaymastery_logout, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/player_log_mastery.json", JsonSerializer.Serialize(Database.player_log_mastery, Database.JSON_options));
         }
 
         public static void LoadWeaponMastery()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/weapon_mastery.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/weapon_mastery.json"))
             {
-                FileStream stream = File.Create("BepInEx/config/RPGMods/Saves/weapon_mastery.json");
+                FileStream stream = File.Create("BepInEx/config/MDNMods/Saves/weapon_mastery.json");
                 stream.Dispose();
             }
-            string json = File.ReadAllText("BepInEx/config/RPGMods/Saves/weapon_mastery.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/Saves/weapon_mastery.json");
             try
             {
                 Database.player_weaponmastery = JsonSerializer.Deserialize<Dictionary<ulong, WeaponMasterData>>(json);
@@ -642,12 +642,12 @@ namespace RPGMods.Systems
                 Plugin.Logger.LogWarning("WeaponMastery DB Created.");
             }
 
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/mastery_decay.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/mastery_decay.json"))
             {
-                FileStream stream = File.Create("BepInEx/config/RPGMods/Saves/mastery_decay.json");
+                FileStream stream = File.Create("BepInEx/config/MDNMods/Saves/mastery_decay.json");
                 stream.Dispose();
             }
-            json = File.ReadAllText("BepInEx/config/RPGMods/Saves/mastery_decay.json");
+            json = File.ReadAllText("BepInEx/config/MDNMods/Saves/mastery_decay.json");
             try
             {
                 Database.player_decaymastery_logout = JsonSerializer.Deserialize<Dictionary<ulong, DateTime>>(json);
@@ -659,12 +659,12 @@ namespace RPGMods.Systems
                 Plugin.Logger.LogWarning("WeaponMasteryDecay DB Created.");
             }
 
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/player_log_mastery.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/player_log_mastery.json"))
             {
-                FileStream stream = File.Create("BepInEx/config/RPGMods/Saves/player_log_mastery.json");
+                FileStream stream = File.Create("BepInEx/config/MDNMods/Saves/player_log_mastery.json");
                 stream.Dispose();
             }
-            json = File.ReadAllText("BepInEx/config/RPGMods/Saves/player_log_mastery.json");
+            json = File.ReadAllText("BepInEx/config/MDNMods/Saves/player_log_mastery.json");
             try
             {
                 Database.player_log_mastery = JsonSerializer.Deserialize<Dictionary<ulong, bool>>(json);

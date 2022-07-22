@@ -1,4 +1,4 @@
-# RPGMods
+# MDNMods
 ### [Original ChatCommands Repository](https://github.com/NopeyBoi/ChatCommands)
 ### Server Only Mod
 Server only mod for RPG system which also include ChatCommands with bug fixes.\
@@ -12,7 +12,7 @@ Read the changelog for extra details.
 Please make sure to thorougly test everything on a test server first, before updating your live server.
 v0.3.0 brings about a large change in the permission and VIP system,
 I've tried to test everything as thorough as possibly, but I am just one person.
-Backup your old `config/RPGMods` folder before trying to update from v0.2.5 and below.
+Backup your old `config/MDNMods` folder before trying to update from v0.2.5 and below.
 ```
 
 ## Experience System
@@ -63,7 +63,7 @@ and 100 as the highest permission (admin).
 
 ## Custom Ban System
 You can now ban a player for the specified duration in days using the .ban/.unban command.\
-`WARNING` if you remove RPGMods all the banned user via the chat command will no longer be banned!
+`WARNING` if you remove MDNMods all the banned user via the chat command will no longer be banned!
 
 ## Config
 <details>
@@ -237,7 +237,7 @@ User designated as SuperAdmin in your server admin list will always bypass the p
 Special commands params that require admin permission can also be adjusted here.
 
 All abbreviation of the command are automatically included, you need only to put the primary command string.\
-The permissions are saved in `BepInEx/config/RPGMods/command_permission.json` and look like this:
+The permissions are saved in `BepInEx/config/MDNMods/command_permission.json` and look like this:
 
 <details>
 <summary>Default Permission - Don't forget to copy!</summary>
@@ -286,7 +286,7 @@ Gives you a previously specified set of items.\
 <details>
 <summary>How does kit work?</summary>
 
-&ensp;&ensp;You will get a new config file located in `BepInEx/config/RPGMods/kits.json`
+&ensp;&ensp;You will get a new config file located in `BepInEx/config/MDNMods/kits.json`
 ```json
 [
   {

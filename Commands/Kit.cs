@@ -1,5 +1,5 @@
 ﻿using ProjectM;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text.Json;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("kit", "kit <Name>", "Gives you a previously specified set of items.")]
     public static class Kit
@@ -43,12 +43,12 @@ namespace RPGMods.Commands
 
         public static void LoadKits()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/kits.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/kits.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/kits.json");
+                var stream = File.Create("BepInEx/config/MDNMods/kits.json");
                 stream.Dispose();
             }
-            string json = File.ReadAllText("BepInEx/config/RPGMods/kits.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/kits.json");
             try
             {
                 kits = JsonSerializer.Deserialize<List<ItemKit>>(json);
@@ -66,7 +66,7 @@ namespace RPGMods.Commands
                 WriteIndented = true,
                 IncludeFields = true
             };
-            File.WriteAllText("BepInEx/config/RPGMods/kits.json", JsonSerializer.Serialize(kits, options));
+            File.WriteAllText("BepInEx/config/MDNMods/kits.json", JsonSerializer.Serialize(kits, options));
         }
     }
 }

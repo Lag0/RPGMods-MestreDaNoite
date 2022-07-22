@@ -1,7 +1,7 @@
-﻿using RPGMods.Utils;
+﻿using MDNMods.Utils;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("status", Usage = "status", Description = "Exibir suas estatísticas de PvP")]
     public static class Stats

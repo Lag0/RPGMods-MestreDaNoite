@@ -1,12 +1,12 @@
 ﻿using ProjectM;
 using ProjectM.Network;
-using RPGMods.Systems;
-using RPGMods.Utils;
+using MDNMods.Systems;
+using MDNMods.Utils;
 using System;
 using Unity.Entities;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("mastery, m", Usage = "mastery [<log> <on>|<off>]", Description = "Exiba sua progressão de maestria atual ou alterne a notificação.")]
     public static class Mastery

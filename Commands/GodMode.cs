@@ -2,9 +2,9 @@
 using System.IO;
 using System.Text.Json;
 using Wetstone.API;
-using RPGMods.Utils;
+using MDNMods.Utils;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("godmode, god", Usage = "godmode", Description = "Toggles god mode.")]
     public static class GodMode
@@ -32,7 +32,7 @@ namespace RPGMods.Commands
 
         public static void SaveGodMode()
         {
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/godmode.json", JsonSerializer.Serialize(Database.godmode, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/godmode.json", JsonSerializer.Serialize(Database.godmode, Database.JSON_options));
         }
 
         public static bool RemoveGodMode(Context ctx)
@@ -48,12 +48,12 @@ namespace RPGMods.Commands
 
         public static void LoadGodMode()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/godmode.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/godmode.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/Saves/godmode.json");
+                var stream = File.Create("BepInEx/config/MDNMods/Saves/godmode.json");
                 stream.Dispose();
             }
-            string json = File.ReadAllText("BepInEx/config/RPGMods/Saves/godmode.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/Saves/godmode.json");
             try
             {
                 Database.godmode = JsonSerializer.Deserialize<Dictionary<ulong, bool>>(json);

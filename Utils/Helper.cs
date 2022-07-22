@@ -9,9 +9,9 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using Wetstone.API;
-using static RPGMods.Utils.Database;
+using static MDNMods.Utils.Database;
 
-namespace RPGMods.Utils
+namespace MDNMods.Utils
 {
     public static class Helper
     {

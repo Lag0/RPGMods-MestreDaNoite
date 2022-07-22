@@ -1,8 +1,8 @@
 ﻿using ProjectM;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("buff", Usage = "buff <Type> [<PlayerName>]", Description = "Sets your current buff")]
     public static class ShardBuff

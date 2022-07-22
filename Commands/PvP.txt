@@ -1,13 +1,13 @@
 ﻿using ProjectM.Network;
-using RPGMods.Systems;
-using RPGMods.Utils;
+using MDNMods.Systems;
+using MDNMods.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Entities;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("pvp", Usage = "pvp [<on|off>]", Description = "Ativa / Desativa modo PvP.", ReqPermission = 100)]
     public static class PvP

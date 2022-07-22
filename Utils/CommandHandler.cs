@@ -1,6 +1,6 @@
 ﻿using BepInEx.Configuration;
 using BepInEx.Logging;
-using RPGMods.Systems;
+using MDNMods.Systems;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +12,7 @@ using UnityEngine;
 using Wetstone.API;
 using Wetstone.Hooks;
 
-namespace RPGMods.Utils
+namespace MDNMods.Utils
 {
     public class CommandHandler
     {

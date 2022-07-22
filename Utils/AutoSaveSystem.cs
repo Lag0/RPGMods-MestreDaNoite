@@ -1,10 +1,10 @@
-﻿using RPGMods.Commands;
-using RPGMods.Systems;
+﻿using MDNMods.Commands;
+using MDNMods.Systems;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RPGMods.Utils
+namespace MDNMods.Utils
 {
     public static class AutoSaveSystem
     {

@@ -1,8 +1,8 @@
 ﻿using ProjectM.Network;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("ping, p", Usage = "ping", Description = "Mostra sua latencia.")]
     public static class Ping

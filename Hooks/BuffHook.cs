@@ -3,10 +3,10 @@
     using Unity.Collections;
     using ProjectM.Network;
     using ProjectM;
-    using RPGMods.Utils;
-    using RPGMods.Systems;
+    using MDNMods.Utils;
+    using MDNMods.Systems;
 
-    namespace RPGMods.Hooks;
+    namespace MDNMods.Hooks;
     [HarmonyPatch(typeof(ModifyUnitStatBuffSystem_Spawn), nameof(ModifyUnitStatBuffSystem_Spawn.OnUpdate))]
     public class ModifyUnitStatBuffSystem_Spawn_Patch
     {

@@ -1,11 +1,11 @@
 ﻿using ProjectM;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("speed", Usage = "speed", Description = "Toggles increased movement speed.")]
 
@@ -34,7 +34,7 @@ namespace RPGMods.Commands
 
         public static void SaveSpeed()
         {
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/speeding.json", JsonSerializer.Serialize(Database.speeding, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/speeding.json", JsonSerializer.Serialize(Database.speeding, Database.JSON_options));
         }
 
         public static bool RemoveSpeed(Context ctx)
@@ -50,12 +50,12 @@ namespace RPGMods.Commands
 
         public static void LoadSpeed()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/speeding.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/speeding.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/Saves/speeding.json");
+                var stream = File.Create("BepInEx/config/MDNMods/Saves/speeding.json");
                 stream.Dispose();
             }
-            string json = File.ReadAllText("BepInEx/config/RPGMods/Saves/speeding.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/Saves/speeding.json");
             try
             {
                 Database.speeding = JsonSerializer.Deserialize<Dictionary<ulong, bool>>(json);

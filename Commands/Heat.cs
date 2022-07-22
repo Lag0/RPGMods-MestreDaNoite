@@ -1,10 +1,10 @@
 ﻿using ProjectM.Network;
-using RPGMods.Systems;
-using RPGMods.Utils;
+using MDNMods.Systems;
+using MDNMods.Utils;
 using Unity.Entities;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("heat", Usage = "heat", Description = "Mostra seu nivel de procurado atual.")]
     public static class Heat

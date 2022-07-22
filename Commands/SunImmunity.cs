@@ -3,12 +3,12 @@ using System.IO;
 using System.Text.Json;
 using Wetstone.API;
 using ProjectM;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using ProjectM.Network;
 using Unity.Entities;
 using System;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("sunimmunity, sun", Usage = "sunimmunity", Description = "Toggles sun immunity.")]
     public static class SunImmunity
@@ -36,7 +36,7 @@ namespace RPGMods.Commands
 
         public static void SaveImmunity()
         {
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/sunimmunity.json", JsonSerializer.Serialize(Database.sunimmunity, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/sunimmunity.json", JsonSerializer.Serialize(Database.sunimmunity, Database.JSON_options));
         }
 
         public static bool RemoveImmunity(Context ctx)
@@ -52,13 +52,13 @@ namespace RPGMods.Commands
 
         public static void LoadSunImmunity()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/sunimmunity.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/sunimmunity.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/Saves/sunimmunity.json");
+                var stream = File.Create("BepInEx/config/MDNMods/Saves/sunimmunity.json");
                 stream.Dispose();
             }
 
-            string json = File.ReadAllText("BepInEx/config/RPGMods/Saves/sunimmunity.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/Saves/sunimmunity.json");
             try
             {
                 Database.sunimmunity = JsonSerializer.Deserialize<Dictionary<ulong, bool>>(json);

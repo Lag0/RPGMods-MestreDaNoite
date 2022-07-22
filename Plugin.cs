@@ -3,17 +3,16 @@ using BepInEx.Configuration;
 using BepInEx.IL2CPP;
 using BepInEx.Logging;
 using HarmonyLib;
-using ProjectM.Scripting;
-using RPGMods.Commands;
-using RPGMods.Hooks;
-using RPGMods.Systems;
-using RPGMods.Utils;
+using MDNMods;
+using MDNMods.Commands;
+using MDNMods.Systems;
+using MDNMods.Utils;
 using System.IO;
 using System.Reflection;
 using Wetstone.API;
 using Wetstone.Hooks;
 
-namespace RPGMods
+namespace MDNMods
 {
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     [BepInDependency("xyz.molenzwiebel.wetstone")]
@@ -28,6 +27,8 @@ namespace RPGMods
         private ConfigEntry<float> DelayedCommands;
         private ConfigEntry<int> WaypointLimit;
 
+        private ConfigEntry<string> DiscordLink;
+        
         private ConfigEntry<bool> EnableVIPSystem;
         private ConfigEntry<bool> EnableVIPWhitelist;
         private ConfigEntry<int> VIP_Permission;
@@ -65,14 +66,14 @@ namespace RPGMods
         private ConfigEntry<int> Ambush_Chance;
         private ConfigEntry<float> Ambush_Despawn_Unit_Timer;
 
-        private ConfigEntry<bool> EnableExperienceSystem;
-        private ConfigEntry<int> MaxLevel;
-        private ConfigEntry<float> EXPMultiplier;
-        private ConfigEntry<float> VBloodEXPMultiplier;
-        private ConfigEntry<double> EXPLostOnDeath;
-        private ConfigEntry<float> EXPFormula_1;
-        private ConfigEntry<double> EXPGroupModifier;
-        private ConfigEntry<float> EXPGroupMaxDistance;
+        // private ConfigEntry<bool> EnableExperienceSystem;
+        // private ConfigEntry<int> MaxLevel;
+        // private ConfigEntry<float> EXPMultiplier;
+        // private ConfigEntry<float> VBloodEXPMultiplier;
+        // private ConfigEntry<double> EXPLostOnDeath;
+        // private ConfigEntry<float> EXPFormula_1;
+        // private ConfigEntry<double> EXPGroupModifier;
+        // private ConfigEntry<float> EXPGroupMaxDistance;
 
         private ConfigEntry<bool> EnableWeaponMaster;
         private ConfigEntry<bool> EnableWeaponMasterDecay;
@@ -96,6 +97,8 @@ namespace RPGMods
             DisabledCommands = Config.Bind("Config", "Disabled Commands", "", "Enter command names to disable them, abbreviation are included automatically. Seperated by commas.\nEx.: save,godmode");
             WaypointLimit = Config.Bind("Config", "Waypoint Limit", 3, "Set a waypoint limit per user.");
 
+            DiscordLink = Config.Bind("Config", "Discord Invite Link", "discord.gg/invite", "Link de convite do discord.");
+            
             EnableVIPSystem = Config.Bind("VIP", "Enable VIP System", false, "Enable the VIP System.");
             EnableVIPWhitelist = Config.Bind("VIP", "Enable VIP Whitelist", false, "Enable the VIP user to ignore server capacity limit.");
             VIP_Permission = Config.Bind("VIP", "Minimum VIP Permission", 10, "The minimum permission level required for the user to be considered as VIP.");
@@ -134,16 +137,16 @@ namespace RPGMods
             Ambush_Despawn_Unit_Timer = Config.Bind("HunterHunted", "Ambush Despawn Timer", 300f, "Despawn the ambush squad after this many second if they are still alive. Ex.: -1 -> Never Despawn");
 
 
-            EnableExperienceSystem = Config.Bind("Experience", "Enable", true, "Enable/disable the the Experience System.");
-            MaxLevel = Config.Bind("Experience", "Max Level", 80, "Configure the experience system max level.");
-            EXPMultiplier = Config.Bind("Experience", "Multiplier", 1.0f, "Multiply the EXP gained by player.\nEx.: 0.7f -> Will reduce the EXP gained by 30%\nFormula: UnitKilledLevel * EXPMultiplier");
-            VBloodEXPMultiplier = Config.Bind("Experience", "VBlood Multiplier", 15f, "Multiply EXP gained from VBlood kill.\nFormula: EXPGained * VBloodMultiplier * EXPMultiplier");
-            EXPLostOnDeath = Config.Bind("Experience", "EXP Lost / Death", 0.10, "Percentage of experience the player lost for every death by NPC, no EXP is lost for PvP.\nFormula: TotalPlayerEXP - (EXPNeeded * EXPLost)");
-            EXPFormula_1 = Config.Bind("Experience", "Constant", 0.2f, "Increase or decrease the required EXP to level up.\nFormula: (level/constant)^2\n" +
-                "EXP Table & Formula: https://bit.ly/3npqdJw");
-            EXPGroupModifier = Config.Bind("Experience", "Group Modifier", 0.75, "Set the modifier for EXP gained for each ally(player) in vicinity.\n" +
-                "Example if you have 2 ally nearby, EXPGained = ((EXPGained * Modifier)*Modifier)");
-            EXPGroupMaxDistance = Config.Bind("Experience", "Ally Max Distance", 50f, "Set the maximum distance an ally(player) has to be from the player for them to share EXP with the player");
+            // EnableExperienceSystem = Config.Bind("Experience", "Enable", true, "Enable/disable the the Experience System.");
+            // MaxLevel = Config.Bind("Experience", "Max Level", 80, "Configure the experience system max level.");
+            // EXPMultiplier = Config.Bind("Experience", "Multiplier", 1.0f, "Multiply the EXP gained by player.\nEx.: 0.7f -> Will reduce the EXP gained by 30%\nFormula: UnitKilledLevel * EXPMultiplier");
+            // VBloodEXPMultiplier = Config.Bind("Experience", "VBlood Multiplier", 15f, "Multiply EXP gained from VBlood kill.\nFormula: EXPGained * VBloodMultiplier * EXPMultiplier");
+            // EXPLostOnDeath = Config.Bind("Experience", "EXP Lost / Death", 0.10, "Percentage of experience the player lost for every death by NPC, no EXP is lost for PvP.\nFormula: TotalPlayerEXP - (EXPNeeded * EXPLost)");
+            // EXPFormula_1 = Config.Bind("Experience", "Constant", 0.2f, "Increase or decrease the required EXP to level up.\nFormula: (level/constant)^2\n" +
+            //     "EXP Table & Formula: https://bit.ly/3npqdJw");
+            // EXPGroupModifier = Config.Bind("Experience", "Group Modifier", 0.75, "Set the modifier for EXP gained for each ally(player) in vicinity.\n" +
+            //     "Example if you have 2 ally nearby, EXPGained = ((EXPGained * Modifier)*Modifier)");
+            // EXPGroupMaxDistance = Config.Bind("Experience", "Ally Max Distance", 50f, "Set the maximum distance an ally(player) has to be from the player for them to share EXP with the player");
 
             EnableWeaponMaster = Config.Bind("Mastery", "Enable Weapon Mastery", true, "Enable/disable the weapon mastery system.");
             EnableWeaponMasterDecay = Config.Bind("Mastery", "Enable Mastery Decay", true, "Enable/disable the decay of weapon mastery when the user is offline.");
@@ -158,12 +161,12 @@ namespace RPGMods
             WeaponDecayInterval = Config.Bind("Mastery", "Decay Interval", 60, "Every amount of seconds the user is offline by the configured value will translate as 1 decay tick.");
             Offline_Weapon_MasteryDecayValue = Config.Bind("Mastery", "Decay Value", 1, "Mastery will decay by this amount for every decay tick.(1 -> 0.001%)");
 
-            if (!Directory.Exists("BepInEx/config/RPGMods")) Directory.CreateDirectory("BepInEx/config/RPGMods");
-            if (!Directory.Exists("BepInEx/config/RPGMods/Saves")) Directory.CreateDirectory("BepInEx/config/RPGMods/Saves");
+            if (!Directory.Exists("BepInEx/config/MDNMods")) Directory.CreateDirectory("BepInEx/config/MDNMods");
+            if (!Directory.Exists("BepInEx/config/MDNMods/Saves")) Directory.CreateDirectory("BepInEx/config/MDNMods/Saves");
 
-            if (!File.Exists("BepInEx/config/RPGMods/kits.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/kits.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/kits.json");
+                var stream = File.Create("BepInEx/config/MDNMods/kits.json");
                 stream.Dispose();
             }
         }
@@ -198,6 +201,8 @@ namespace RPGMods
             CommandHandler.delay_Cooldown = DelayedCommands.Value;
             Waypoint.WaypointLimit = WaypointLimit.Value;
 
+            Discord.DiscordLink = DiscordLink.Value;
+             
             PermissionSystem.isVIPSystem = EnableVIPSystem.Value;
             PermissionSystem.isVIPWhitelist = EnableVIPWhitelist.Value;
             PermissionSystem.VIP_Permission = VIP_Permission.Value;
@@ -235,14 +240,14 @@ namespace RPGMods
             SiegeSystem.GolemPDef.Value = GolemPhysicalReduction.Value;
             SiegeSystem.GolemSDef.Value = GolemSpellReduction.Value;
 
-            ExperienceSystem.isEXPActive = EnableExperienceSystem.Value;
-            ExperienceSystem.MaxLevel = MaxLevel.Value;
-            ExperienceSystem.EXPMultiplier = EXPMultiplier.Value;
-            ExperienceSystem.VBloodMultiplier = VBloodEXPMultiplier.Value;
-            ExperienceSystem.EXPLostOnDeath = EXPLostOnDeath.Value;
-            ExperienceSystem.EXPConstant = EXPFormula_1.Value;
-            ExperienceSystem.GroupModifier = EXPGroupModifier.Value;
-            ExperienceSystem.GroupMaxDistance = EXPGroupMaxDistance.Value;
+            // ExperienceSystem.isEXPActive = EnableExperienceSystem.Value;
+            // ExperienceSystem.MaxLevel = MaxLevel.Value;
+            // ExperienceSystem.EXPMultiplier = EXPMultiplier.Value;
+            // ExperienceSystem.VBloodMultiplier = VBloodEXPMultiplier.Value;
+            // ExperienceSystem.EXPLostOnDeath = EXPLostOnDeath.Value;
+            // ExperienceSystem.EXPConstant = EXPFormula_1.Value;
+            // ExperienceSystem.GroupModifier = EXPGroupModifier.Value;
+            // ExperienceSystem.GroupMaxDistance = EXPGroupMaxDistance.Value;
 
             WeaponMasterSystem.isMasteryEnabled = EnableWeaponMaster.Value;
             WeaponMasterSystem.isDecaySystemEnabled = EnableWeaponMasterDecay.Value;

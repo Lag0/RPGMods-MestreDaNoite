@@ -1,13 +1,13 @@
 ﻿using HarmonyLib;
 using ProjectM;
 using ProjectM.Network;
-using RPGMods.Systems;
-using RPGMods.Utils;
+using MDNMods.Systems;
+using MDNMods.Utils;
 using Stunlock.Network;
 using System;
 using Unity.Collections;
 
-namespace RPGMods.Hooks
+namespace MDNMods.Hooks
 {
     [HarmonyPatch(typeof(KickBanSystem_Server), nameof(KickBanSystem_Server.IsBanned))]
     public class KickBanSystem_Server_Patch

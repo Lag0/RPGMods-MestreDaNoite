@@ -1,13 +1,13 @@
 ﻿using ProjectM;
 using ProjectM.Network;
 using ProjectM.Scripting;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("teleport, tp", "teleport <Name>", "Teleport you to another online player within your clan.")]
     public static class Teleport

@@ -1,8 +1,8 @@
 {
-  "name": "RPGMods",
-  "version_number": "0.0.2",
-  "website_url": "https://github.com/Kaltharos/RPGMods",
-  "description": "RPGMods combined with ChatCommands.",
+  "name": "MDNMods",
+  "version_number": "0.0.1",
+  "website_url": "https://github.com/Lag0/MDNMods-MestreDaNoite",
+  "description": "MDNMods based mod, fully edit for the brazilian server 'MestreDaNoite Solo/Duo'.",
   "dependencies": [
     "BepInEx-BepInExPack_V_Rising-1.0.0",
     "molenzwiebel-Wetstone-1.1.0"

@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
 using ProjectM;
-using RPGMods.Utils;
+using MDNMods.Utils;
 
-namespace RPGMods.Hooks
+namespace MDNMods.Hooks
 {
     [HarmonyPatch(typeof(TriggerPersistenceSaveSystem), nameof(TriggerPersistenceSaveSystem.TriggerSave))]
     public class TriggerPersistenceSaveSystem_Patch

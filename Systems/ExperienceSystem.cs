@@ -10,15 +10,15 @@ using Unity.Entities;
 using Unity.Transforms;
 using Unity.Mathematics;
 using Wetstone.API;
-using RPGMods.Utils;
+using MDNMods.Utils;
 
-namespace RPGMods.Systems
+namespace MDNMods.Systems
 {
     public class ExperienceSystem
     {
         private static EntityManager entityManager = VWorld.Server.EntityManager;
 
-        public static bool isEXPActive = true;
+        public static bool isEXPActive = false;
         public static float EXPMultiplier = 1;
         public static float VBloodMultiplier = 15;
         public static float EXPConstant = 0.1f;
@@ -244,18 +244,18 @@ namespace RPGMods.Systems
 
         public static void SaveEXPData()
         {
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/player_experience.json", JsonSerializer.Serialize(Database.player_experience, Database.JSON_options));
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/player_log_exp.json", JsonSerializer.Serialize(Database.player_log_exp, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/player_experience.json", JsonSerializer.Serialize(Database.player_experience, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/player_log_exp.json", JsonSerializer.Serialize(Database.player_log_exp, Database.JSON_options));
         }
 
         public static void LoadEXPData()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/player_experience.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/player_experience.json"))
             {
-                FileStream stream = File.Create("BepInEx/config/RPGMods/Saves/player_experience.json");
+                FileStream stream = File.Create("BepInEx/config/MDNMods/Saves/player_experience.json");
                 stream.Dispose();
             }
-            string json = File.ReadAllText("BepInEx/config/RPGMods/Saves/player_experience.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/Saves/player_experience.json");
             try
             {
                 Database.player_experience = JsonSerializer.Deserialize<Dictionary<ulong, int>>(json);
@@ -267,12 +267,12 @@ namespace RPGMods.Systems
                 Plugin.Logger.LogWarning("PlayerEXP DB Created.");
             }
 
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/player_log_exp.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/player_log_exp.json"))
             {
-                FileStream stream = File.Create("BepInEx/config/RPGMods/Saves/player_log_exp.json");
+                FileStream stream = File.Create("BepInEx/config/MDNMods/Saves/player_log_exp.json");
                 stream.Dispose();
             }
-            json = File.ReadAllText("BepInEx/config/RPGMods/Saves/player_log_exp.json");
+            json = File.ReadAllText("BepInEx/config/MDNMods/Saves/player_log_exp.json");
             try
             {
                 Database.player_log_exp = JsonSerializer.Deserialize<Dictionary<ulong, bool>>(json);

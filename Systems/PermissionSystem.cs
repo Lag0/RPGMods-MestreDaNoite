@@ -1,7 +1,7 @@
 ﻿using ProjectM;
 using ProjectM.Network;
-using RPGMods;
-using RPGMods.Utils;
+using MDNMods;
+using MDNMods.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +11,7 @@ using Unity.Entities;
 using Wetstone.API;
 using Wetstone.Hooks;
 
-namespace RPGMods.Systems
+namespace MDNMods.Systems
 {
     public static class PermissionSystem
     {
@@ -190,22 +190,22 @@ namespace RPGMods.Systems
 
         public static void SavePermissions()
         {
-            File.WriteAllText("BepInEx/config/RPGMods/command_permission.json", JsonSerializer.Serialize(Database.command_permission, Database.Pretty_JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/command_permission.json", JsonSerializer.Serialize(Database.command_permission, Database.Pretty_JSON_options));
         }
 
         public static void SaveUserPermission()
         {
-            File.WriteAllText("BepInEx/config/RPGMods/user_permission.json", JsonSerializer.Serialize(Database.user_permission, Database.Pretty_JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/user_permission.json", JsonSerializer.Serialize(Database.user_permission, Database.Pretty_JSON_options));
         }
 
         public static void LoadPermissions()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/user_permission.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/user_permission.json"))
             {
-                FileStream stream = File.Create("BepInEx/config/RPGMods/user_permission.json");
+                FileStream stream = File.Create("BepInEx/config/MDNMods/user_permission.json");
                 stream.Dispose();
             }
-            string json = File.ReadAllText("BepInEx/config/RPGMods/user_permission.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/user_permission.json");
             try
             {
                 Database.user_permission = JsonSerializer.Deserialize<Dictionary<ulong, int>>(json);
@@ -217,12 +217,12 @@ namespace RPGMods.Systems
                 Plugin.Logger.LogWarning("UserPermission DB Created.");
             }
 
-            if (!File.Exists("BepInEx/config/RPGMods/command_permission.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/command_permission.json"))
             {
-                FileStream stream = File.Create("BepInEx/config/RPGMods/command_permission.json");
+                FileStream stream = File.Create("BepInEx/config/MDNMods/command_permission.json");
                 stream.Dispose();
             }
-            json = File.ReadAllText("BepInEx/config/RPGMods/command_permission.json");
+            json = File.ReadAllText("BepInEx/config/MDNMods/command_permission.json");
             try
             {
                 Database.command_permission = JsonSerializer.Deserialize<Dictionary<string, int>>(json);

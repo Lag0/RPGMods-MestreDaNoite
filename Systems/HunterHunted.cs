@@ -1,12 +1,12 @@
 ﻿using ProjectM;
 using ProjectM.Network;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using System;
 using System.Collections.Generic;
 using Unity.Entities;
 using Wetstone.API;
 
-namespace RPGMods.Systems
+namespace MDNMods.Systems
 {
     public class HunterHunted
     {

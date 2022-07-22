@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using ProjectM.Network;
-using RPGMods.Systems;
-using RPGMods.Utils;
+using MDNMods.Systems;
+using MDNMods.Utils;
 using Wetstone.API;
 
-namespace RPGMods.Commands;
+namespace MDNMods.Commands;
 
 [Command("ban", Usage = "ban <playername> <days> <reason>",
     Description = "Check the status of specified player, or ban them. 0 is permanent.")]

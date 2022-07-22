@@ -1,9 +1,9 @@
 ﻿using ProjectM;
 using ProjectM.Network;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("kick", Usage = "kick <playername>", Description = "Kick the specified player out of the server.")]
     public static class Kick

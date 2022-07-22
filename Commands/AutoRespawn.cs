@@ -2,11 +2,11 @@
 using System.IO;
 using System.Text.Json;
 using ProjectM.Network;
-using RPGMods.Systems;
-using RPGMods.Utils;
+using MDNMods.Systems;
+using MDNMods.Utils;
 using Wetstone.API;
 
-namespace RPGMods.Commands;
+namespace MDNMods.Commands;
 
 [Command("autorespawn", Usage = "autorespawn [<PlayerName>]",
     Description = "Toggle auto respawn on the same position on death.")]
@@ -66,7 +66,7 @@ public static class AutoRespawn
 
     public static void SaveAutoRespawn()
     {
-        File.WriteAllText("BepInEx/config/RPGMods/Saves/autorespawn.json",
+        File.WriteAllText("BepInEx/config/MDNMods/Saves/autorespawn.json",
             JsonSerializer.Serialize(Database.autoRespawn, Database.JSON_options));
     }
 
@@ -83,13 +83,13 @@ public static class AutoRespawn
 
     public static void LoadAutoRespawn()
     {
-        if (!File.Exists("BepInEx/config/RPGMods/Saves/autorespawn.json"))
+        if (!File.Exists("BepInEx/config/MDNMods/Saves/autorespawn.json"))
         {
-            var stream = File.Create("BepInEx/config/RPGMods/Saves/autorespawn.json");
+            var stream = File.Create("BepInEx/config/MDNMods/Saves/autorespawn.json");
             stream.Dispose();
         }
 
-        var json = File.ReadAllText("BepInEx/config/RPGMods/Saves/autorespawn.json");
+        var json = File.ReadAllText("BepInEx/config/MDNMods/Saves/autorespawn.json");
         try
         {
             Database.autoRespawn = JsonSerializer.Deserialize<Dictionary<ulong, bool>>(json);

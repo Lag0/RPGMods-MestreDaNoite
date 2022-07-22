@@ -1,10 +1,10 @@
 ﻿using ProjectM;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using System.Globalization;
 using System.Linq;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("give, g", Usage = "give <itemname> [<amount>]", Description = "Adds specified items to your inventory")]
     public static class Give

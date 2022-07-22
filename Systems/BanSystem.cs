@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using ProjectM;
 using Unity.Entities;
 using Wetstone.API;
@@ -9,7 +9,7 @@ using ProjectM.Network;
 using System.IO;
 using System.Text.Json;
 
-namespace RPGMods.Systems
+namespace MDNMods.Systems
 {
     public static class BanSystem
     {
@@ -73,17 +73,17 @@ namespace RPGMods.Systems
 
         public static void SaveBanList()
         {
-            File.WriteAllText("BepInEx/config/RPGMods/user_banlist.json", JsonSerializer.Serialize(Database.user_banlist, Database.Pretty_JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/user_banlist.json", JsonSerializer.Serialize(Database.user_banlist, Database.Pretty_JSON_options));
         }
 
         public static void LoadBanList()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/user_banlist.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/user_banlist.json"))
             {
-                FileStream stream = File.Create("BepInEx/config/RPGMods/user_banlist.json");
+                FileStream stream = File.Create("BepInEx/config/MDNMods/user_banlist.json");
                 stream.Dispose();
             }
-            string json = File.ReadAllText("BepInEx/config/RPGMods/user_banlist.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/user_banlist.json");
             try
             {
                 Database.user_banlist = JsonSerializer.Deserialize<Dictionary<ulong, BanData>>(json);

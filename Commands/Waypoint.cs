@@ -1,5 +1,5 @@
-﻿using RPGMods.Systems;
-using RPGMods.Utils;
+﻿using MDNMods.Systems;
+using MDNMods.Utils;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +8,7 @@ using Unity.Entities;
 using Unity.Transforms;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("waypoint, wp", "waypoint <Name|Set|Remove|List> [<Name>] [global]", "Teleports you to previously created waypoints.")]
     public static class Waypoint
@@ -158,13 +158,13 @@ namespace RPGMods.Commands
 
         public static void LoadWaypoints()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/waypoints.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/waypoints.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/Saves/waypoints.json");
+                var stream = File.Create("BepInEx/config/MDNMods/Saves/waypoints.json");
                 stream.Dispose();
             }
 
-            string json = File.ReadAllText("BepInEx/config/RPGMods/Saves/waypoints.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/Saves/waypoints.json");
             try
             {
                 Database.waypoints = JsonSerializer.Deserialize<Dictionary<string, WaypointData>>(json);
@@ -176,13 +176,13 @@ namespace RPGMods.Commands
                 Plugin.Logger.LogWarning("Waypoints DB Created");
             }
 
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/global_waypoints.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/global_waypoints.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/Saves/global_waypoints.json");
+                var stream = File.Create("BepInEx/config/MDNMods/Saves/global_waypoints.json");
                 stream.Dispose();
             }
 
-            json = File.ReadAllText("BepInEx/config/RPGMods/Saves/global_waypoints.json");
+            json = File.ReadAllText("BepInEx/config/MDNMods/Saves/global_waypoints.json");
             try
             {
                 Database.globalWaypoint = JsonSerializer.Deserialize<Dictionary<string, WaypointData>>(json);
@@ -194,13 +194,13 @@ namespace RPGMods.Commands
                 Plugin.Logger.LogWarning("GlobalWaypoints DB Created");
             }
 
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/total_waypoints.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/total_waypoints.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/Saves/total_waypoints.json");
+                var stream = File.Create("BepInEx/config/MDNMods/Saves/total_waypoints.json");
                 stream.Dispose();
             }
 
-            json = File.ReadAllText("BepInEx/config/RPGMods/Saves/total_waypoints.json");
+            json = File.ReadAllText("BepInEx/config/MDNMods/Saves/total_waypoints.json");
             try
             {
                 Database.waypoints_owned = JsonSerializer.Deserialize<Dictionary<ulong, int>>(json);
@@ -215,9 +215,9 @@ namespace RPGMods.Commands
 
         public static void SaveWaypoints()
         {
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/waypoints.json", JsonSerializer.Serialize(Database.waypoints, Database.JSON_options));
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/global_waypoints.json", JsonSerializer.Serialize(Database.globalWaypoint, Database.JSON_options));
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/total_waypoints.json", JsonSerializer.Serialize(Database.waypoints_owned, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/waypoints.json", JsonSerializer.Serialize(Database.waypoints, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/global_waypoints.json", JsonSerializer.Serialize(Database.globalWaypoint, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/total_waypoints.json", JsonSerializer.Serialize(Database.waypoints_owned, Database.JSON_options));
         }
     }
 }

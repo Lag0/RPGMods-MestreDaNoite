@@ -6,7 +6,7 @@ using Unity.Entities;
 using Wetstone.API;
 using Wetstone.Hooks;
 
-namespace RPGMods.Utils
+namespace MDNMods.Utils
 {
     public static class Output
     {

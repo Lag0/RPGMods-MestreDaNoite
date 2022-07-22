@@ -1,4 +1,4 @@
-﻿using RPGMods.Utils;
+﻿using MDNMods.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("spawnnpc, spn", "spawnnpc <Prefab Name/GUID> [<Amount>] [<Waypoint>]", "Spawns a NPC to a previously created waypoint.")]
     public static class SpawnNPC

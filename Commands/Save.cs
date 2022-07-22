@@ -1,11 +1,11 @@
 ﻿using ProjectM;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using Wetstone.API;
 using System.Text.RegularExpressions;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
-    [Command("save", Usage = "save [<name>]", Description = "Force the server to save the game as well as write RPGMods DB to a json file.")]
+    [Command("save", Usage = "save [<name>]", Description = "Force the server to save the game as well as write MDNMods DB to a json file.")]
     public static class Save
     {
         public static void Initialize(Context ctx)

@@ -1,14 +1,11 @@
 ﻿using ProjectM;
-using RPGMods.Systems;
-using System;
+using MDNMods.Systems;
 using System.Collections.Generic;
-using System.Text;
 using Unity.Entities;
-using Unity.Mathematics;
 using Unity.Transforms;
 using Wetstone.API;
 
-namespace RPGMods.Utils
+namespace MDNMods.Utils
 {
     public class SquadList
     {

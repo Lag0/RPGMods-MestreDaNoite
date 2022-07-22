@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c3a60da7-d089-4bf6-a720-ad1b4b81d10b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Commands/Discord.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Commands/Ready.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/git_toolbox_prj.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/AutoRespawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/AutoRespawn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/BanUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/BanUser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/BloodPotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/BloodPotion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/BloodSet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/BloodSet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Buffs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Buffs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Experience.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Experience.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Give.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Give.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/GodMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/GodMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Heat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Heat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Help.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Help.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Inventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Kick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Kick.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Kit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Kit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Leaderboard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Leaderboard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Mastery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Mastery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/NoCooldown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/NoCooldown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Permission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Permission.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Ping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Ping.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Punish.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Punish.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/PvP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/PvP.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/ResetCooldown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/ResetCooldown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Save.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Save.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/SpawnNPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/SpawnNPC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Speed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Speed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Stats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Stats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/SunImmunity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/SunImmunity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Teleport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Teleport.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Waypoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Waypoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlobalSuppressions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlobalSuppressions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hooks/AdminAuthHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/AdminAuthHook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hooks/BuffHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/BuffHook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hooks/DeathHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/DeathHook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hooks/EquipmentSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/EquipmentSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hooks/KickBanHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/KickBanHook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hooks/SaveSystemHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/SaveSystemHook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hooks/ServerBootstrapHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/ServerBootstrapHook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hooks/VampireDownedHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/VampireDownedHook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPGMods.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MDNMods.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPGMods.sln" beforeDir="false" afterPath="$PROJECT_DIR$/MDNMods.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Systems/BanSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/BanSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Systems/ExperienceSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/ExperienceSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Systems/HunterHunted.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/HunterHunted.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Systems/PermissionSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/PermissionSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Systems/PvPSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/PvPSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Systems/SiegeSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/SiegeSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Systems/WeaponMasterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/WeaponMasterSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/AutoSaveSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/AutoSaveSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/CommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/Database.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/Database.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/ItemKit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/ItemKit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/Output.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/RespawnCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/RespawnCharacter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/SquadList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/SquadList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="master" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/81fb201dc9e549af94c9affa95fdfcf24baa00/5e/ae896048/02000453.il" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3a3726d613d34594961b3ed4072833621ac00/18/e5a3ed4d/PluginInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/486e31e2fc6b4dc1af35762b02172af5a19000/41/df28ebee/AdminUser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/486e31e2fc6b4dc1af35762b02172af5a19000/99/04a10ed3/ChangeBloodDebugEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81fb201dc9e549af94c9affa95fdfcf24baa00/10/c8735ba5/ModificationType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81fb201dc9e549af94c9affa95fdfcf24baa00/2d/7b27b1b3/UnitStatType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81fb201dc9e549af94c9affa95fdfcf24baa00/43/4e8a781c/ModifyUnitStatBuff_DOTS.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81fb201dc9e549af94c9affa95fdfcf24baa00/54/8158e105/PlayerCharacter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81fb201dc9e549af94c9affa95fdfcf24baa00/c1/d8802ee9/BuffUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/98caebe3d0104e0093989d62826fbfefb498/3e/7ca80e80/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6f2cf0039194aaf805afaee23e1c3ad1e400/96/3ce33233/NetworkedEntity.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e132336fa867915bfe77a5e9d72544ea9db2f2c7622e7d849c04cf2bbb0e/FieldOffsetAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/bruno/RiderProjects/RPGMods-MestreDaNoite/Commands/AutoRespawn.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Commands/Buffs.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Commands/Discord.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Commands/Kit.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Commands/Ready.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Commands/Speed.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Commands/Stats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hooks/BuffHook.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/bruno/RiderProjects/RPGMods-MestreDaNoite/Plugin.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugin.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Systems/PermissionSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Systems/WeaponMasterSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/manifest.json" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
+  <component name="ProjectId" id="2BzUk0bRfO5oakDgVpmnvPlMLQG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "rider.run.widget.enabled.cache": "false",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c3a60da7-d089-4bf6-a720-ad1b4b81d10b" name="Changes" comment="" />
+      <created>1657908545829</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657908545829</updated>
+      <workItem from="1657908553129" duration="4750000" />
+      <workItem from="1657918577760" duration="600000" />
+      <workItem from="1657919579811" duration="3721000" />
+      <workItem from="1658163424764" duration="25084000" />
+      <workItem from="1658268548687" duration="1696000" />
+      <workItem from="1658277077939" duration="545000" />
+      <workItem from="1658339992701" duration="766000" />
+      <workItem from="1658342186984" duration="609000" />
+      <workItem from="1658342986184" duration="13581000" />
+    </task>
+    <task id="LOCAL-00001" summary="ajustando mov speed e adagas!">
+      <created>1657910809958</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1657910809958</updated>
+    </task>
+    <task id="LOCAL-00002" summary="balanceamento">
+      <created>1657914043924</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657914043924</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Ajustando permissões, sistema de kda, bufando espada, traduzindo ping.">
+      <created>1658207667864</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1658207667864</updated>
+    </task>
+    <task id="LOCAL-00004" summary="buff command">
+      <created>1658261073761</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1658261073761</updated>
+    </task>
+    <task id="LOCAL-00005" summary="buff command">
+      <created>1658261089054</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658261089054</updated>
+    </task>
+    <task id="LOCAL-00006" summary="master">
+      <created>1658272724154</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1658272724154</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Adicionando multiplicador de xp para mobs normais, refatorando alguns arquivos">
+      <created>1658344303602</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1658344303602</updated>
+    </task>
+    <task id="LOCAL-00008" summary="adicionado boost multiplyer e isBoostEnable">
+      <created>1658346168649</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1658346168649</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="ajustando mov speed e adagas!" />
+    <MESSAGE value="balanceamento" />
+    <MESSAGE value="Ajustando permissões, sistema de kda, bufando espada, traduzindo ping." />
+    <MESSAGE value="buff command" />
+    <MESSAGE value="master" />
+    <MESSAGE value="Adicionando multiplicador de xp para mobs normais, refatorando alguns arquivos" />
+    <MESSAGE value="adicionado boost multiplyer e isBoostEnable" />
+    <option name="LAST_COMMIT_MESSAGE" value="adicionado boost multiplyer e isBoostEnable" />
+  </component>
+</project>

@@ -1,11 +1,11 @@
-﻿using RPGMods.Systems;
-using RPGMods.Utils;
+﻿using MDNMods.Systems;
+using MDNMods.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("leaderboard, lb, pvp", Usage = "leaderboard / lb / pvp ",
         Description = "Mostra o rank atual!", ReqPermission = 0)]

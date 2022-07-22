@@ -1,12 +1,12 @@
 ﻿using ProjectM;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using Unity.Entities;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("nocooldown, nocd", Usage = "nocooldown", Description = "Toggles instant cooldown for all abilities.")]
     public static class NoCooldown
@@ -35,7 +35,7 @@ namespace RPGMods.Commands
 
         public static void SaveCooldown()
         {
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/nocooldown.json", JsonSerializer.Serialize(Database.nocooldownlist, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/nocooldown.json", JsonSerializer.Serialize(Database.nocooldownlist, Database.JSON_options));
         }
 
         public static bool RemoveCooldown(Context ctx)
@@ -51,12 +51,12 @@ namespace RPGMods.Commands
 
         public static void LoadNoCooldown()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/nocooldown.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/nocooldown.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/Saves/nocooldown.json");
+                var stream = File.Create("BepInEx/config/MDNMods/Saves/nocooldown.json");
                 stream.Dispose();
             }
-            string json = File.ReadAllText("BepInEx/config/RPGMods/Saves/nocooldown.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/Saves/nocooldown.json");
             try
             {
                 Database.nocooldownlist = JsonSerializer.Deserialize<Dictionary<ulong, bool>>(json);

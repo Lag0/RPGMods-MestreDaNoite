@@ -1,6 +1,6 @@
 ﻿using ProjectM;
 using ProjectM.Network;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +10,7 @@ using Unity.Entities;
 using Wetstone.API;
 using Wetstone.Hooks;
 
-namespace RPGMods.Systems
+namespace MDNMods.Systems
 {
     public class PvPSystem
     {
@@ -196,19 +196,19 @@ namespace RPGMods.Systems
 
         public static void SavePvPStat()
         {
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/pvpkills.json", JsonSerializer.Serialize(Database.pvpkills, Database.JSON_options));
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/pvpdeath.json", JsonSerializer.Serialize(Database.pvpdeath, Database.JSON_options));
-            File.WriteAllText("BepInEx/config/RPGMods/Saves/pvpkd.json", JsonSerializer.Serialize(Database.pvpkd, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/pvpkills.json", JsonSerializer.Serialize(Database.pvpkills, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/pvpdeath.json", JsonSerializer.Serialize(Database.pvpdeath, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/MDNMods/Saves/pvpkd.json", JsonSerializer.Serialize(Database.pvpkd, Database.JSON_options));
         }
 
         public static void LoadPvPStat()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/pvpkills.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/pvpkills.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/Saves/pvpkills.json");
+                var stream = File.Create("BepInEx/config/MDNMods/Saves/pvpkills.json");
                 stream.Dispose();
             }
-            string json = File.ReadAllText("BepInEx/config/RPGMods/Saves/pvpkills.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/Saves/pvpkills.json");
             try
             {
                 Database.pvpkills = JsonSerializer.Deserialize<Dictionary<ulong, int>>(json);
@@ -220,12 +220,12 @@ namespace RPGMods.Systems
                 Plugin.Logger.LogWarning("PvPKills DB Created.");
             }
 
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/pvpdeath.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/pvpdeath.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/Saves/pvpdeath.json");
+                var stream = File.Create("BepInEx/config/MDNMods/Saves/pvpdeath.json");
                 stream.Dispose();
             }
-            json = File.ReadAllText("BepInEx/config/RPGMods/Saves/pvpdeath.json");
+            json = File.ReadAllText("BepInEx/config/MDNMods/Saves/pvpdeath.json");
             try
             {
                 Database.pvpdeath = JsonSerializer.Deserialize<Dictionary<ulong, int>>(json);
@@ -237,12 +237,12 @@ namespace RPGMods.Systems
                 Plugin.Logger.LogWarning("PvPDeath DB Created.");
             }
 
-            if (!File.Exists("BepInEx/config/RPGMods/Saves/pvpkd.json"))
+            if (!File.Exists("BepInEx/config/MDNMods/Saves/pvpkd.json"))
             {
-                var stream = File.Create("BepInEx/config/RPGMods/Saves/pvpkd.json");
+                var stream = File.Create("BepInEx/config/MDNMods/Saves/pvpkd.json");
                 stream.Dispose();
             }
-            json = File.ReadAllText("BepInEx/config/RPGMods/Saves/pvpkd.json");
+            json = File.ReadAllText("BepInEx/config/MDNMods/Saves/pvpkd.json");
             try
             {
                 Database.pvpkd = JsonSerializer.Deserialize<Dictionary<ulong, double>>(json);

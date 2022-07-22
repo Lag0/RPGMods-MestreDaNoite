@@ -6,7 +6,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Wetstone.API;
 
-namespace RPGMods.Utils
+namespace MDNMods.Utils
 {
     struct NullableFloat
     {

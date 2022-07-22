@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>RPGMods</AssemblyName>
-    <Description>RPG Mods combined with ChatCommands</Description>
-    <Version>0.3.1</Version>
+    <AssemblyName>MDNMods</AssemblyName>
+    <Description>MDNMods based mod, fully edit for the brazilian server 'MestreDaNoite Solo/Duo'.</Description>
+    <Version>0.0.1</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>preview</LangVersion>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
@@ -601,5 +601,56 @@
 
   <ItemGroup>
     <Compile Remove="Commands\Stats.cs" />
+    <Compile Include="obj\Release\netstandard2.1\.NETStandard,Version=v2.1.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\netstandard2.1\MDNMods.AssemblyInfo.cs" />
+    <Compile Include="obj\Release\netstandard2.1\PluginInfo.cs" />
+    <Compile Include="obj\Release\netstandard2.1\RPGMods.AssemblyInfo.cs" />
+    <Compile Remove="bin\**" />
+    <Compile Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Release\netstandard2.1\mdn-mods\icon.png" />
+    <Content Include="bin\Release\netstandard2.1\mdn-mods\manifest.json" />
+    <Content Include="bin\Release\netstandard2.1\mdn-mods\MDN-MODS.dll" />
+    <Content Include="bin\Release\netstandard2.1\mdn-mods\README.md" />
+    <Content Include="bin\Release\netstandard2.1\RPGMods.deps.json" />
+    <Content Include="bin\Release\netstandard2.1\RPGMods.pdb" />
+    <Content Include="obj\MDNMods.csproj.nuget.dgspec.json" />
+    <Content Include="obj\MDNMods.csproj.nuget.g.props" />
+    <Content Include="obj\MDNMods.csproj.nuget.g.targets" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="obj\project.nuget.cache" />
+    <Content Include="obj\project.packagespec.json" />
+    <Content Include="obj\Release\netstandard2.1\Costura\291223DA279BD23F3197FAF9B21DFEA7454549E4.costura.system.text.json.dll.compressed.compressed" />
+    <Content Include="obj\Release\netstandard2.1\MDNMods.AssemblyInfoInputs.cache" />
+    <Content Include="obj\Release\netstandard2.1\MDNMods.assets.cache" />
+    <Content Include="obj\Release\netstandard2.1\MDNMods.csproj.AssemblyReference.cache" />
+    <Content Include="obj\Release\netstandard2.1\MDNMods.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\netstandard2.1\MDNMods.GeneratedMSBuildEditorConfig.editorconfig" />
+    <Content Include="obj\Release\netstandard2.1\RPGMods.AssemblyInfoInputs.cache" />
+    <Content Include="obj\Release\netstandard2.1\RPGMods.assets.cache" />
+    <Content Include="obj\Release\netstandard2.1\RPGMods.csproj.AssemblyReference.cache" />
+    <Content Include="obj\Release\netstandard2.1\RPGMods.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Release\netstandard2.1\RPGMods.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\netstandard2.1\RPGMods.csproj.Fody.CopyLocal.cache" />
+    <Content Include="obj\Release\netstandard2.1\RPGMods.csproj.Fody.RuntimeCopyLocal.cache" />
+    <Content Include="obj\Release\netstandard2.1\RPGMods.dll" />
+    <Content Include="obj\Release\netstandard2.1\RPGMods.GeneratedMSBuildEditorConfig.editorconfig" />
+    <Content Include="obj\Release\netstandard2.1\RPGMods.pdb" />
+    <Content Include="obj\rider.project.restore.info" />
+    <Content Include="obj\RPGMods.csproj.nuget.dgspec.json" />
+    <Content Include="obj\RPGMods.csproj.nuget.g.props" />
+    <Content Include="obj\RPGMods.csproj.nuget.g.targets" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="bin\**" />
+    <None Remove="obj\**" />
   </ItemGroup>
 </Project>

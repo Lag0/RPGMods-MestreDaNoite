@@ -1,4 +1,4 @@
-﻿using RPGMods.Utils;
+﻿using MDNMods.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text.Json;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("help, h", Usage = "help [<command>]", Description = "Mostra uma lista de comandos ou detalhes sobre um comando.", ReqPermission = 0)]
     public static class Help
@@ -78,8 +78,8 @@ namespace RPGMods.Commands
 
         public static void LoadPermissions()
         {
-            if (!File.Exists("BepInEx/config/RPGMods/permissions.json")) File.Create("BepInEx/config/RPGMods/permissions.json");
-            string json = File.ReadAllText("BepInEx/config/RPGMods/permissions.json");
+            if (!File.Exists("BepInEx/config/MDNMods/permissions.json")) File.Create("BepInEx/config/MDNMods/permissions.json");
+            string json = File.ReadAllText("BepInEx/config/MDNMods/permissions.json");
             try
             {
                 CommandHandler.Permissions = JsonSerializer.Deserialize<Dictionary<string, bool>>(json);

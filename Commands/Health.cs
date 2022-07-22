@@ -1,9 +1,9 @@
 ﻿using ProjectM;
 using ProjectM.Network;
-using RPGMods.Utils;
+using MDNMods.Utils;
 using Wetstone.API;
 
-namespace RPGMods.Commands
+namespace MDNMods.Commands
 {
     [Command("health, hp", Usage = "health <percentage> [<player name>]", Description = "Sets your current Health")]
     public static class Health
