@@ -95,25 +95,31 @@ namespace MDNMods.Systems
             var victim_user = em.GetComponentData<User>(victim_userEntity);
             var victim_name = victim_user.CharacterName.ToString();
             var victim_id = victim_user.PlatformId;
-
+            
+            bool isAdminKiller = killer_user.IsAdmin;
+            bool isAdminVictim = victim_user.IsAdmin;
+            
             victim_user.SendSystemMessage($"Você foi morto por <color=#c90e21ff>\"{killer_name}\"</color>");
 
             Database.pvpkills.TryGetValue(killer_id, out var KillerKills);
             Database.pvpdeath.TryGetValue(victim_id, out var VictimDeath);
 
-            if(PermissionSystem.GetUserPermission(killer_id) < 60 || PermissionSystem.GetUserPermission(victim_id) < 60)
+            if(PermissionSystem.GetUserPermission(killer_id) < 50 && PermissionSystem.GetUserPermission(victim_id) < 50)
             {
                 Database.pvpkills[killer_id] = KillerKills + 1;
                 Database.pvpdeath[victim_id] = VictimDeath + 1;
             }
-
-
+            
             //-- Update K/D
             UpdateKD(killer_id, victim_id);
 
             //-- Announce Kills only if enable and if the killer is not staff
-            if (announce_kills && PermissionSystem.GetUserPermission(killer_id) < 60) ServerChatUtils.SendSystemMessageToAllClients(em,
-                $"<color=#47ff18>{killer_name}</color> empalou <color=#ff003e>{victim_name}</color>!");
+            if (announce_kills)
+            {
+                if (PermissionSystem.GetUserPermission(killer_id) < 50 && PermissionSystem.GetUserPermission(victim_id) < 50)
+                    ServerChatUtils.SendSystemMessageToAllClients(em,
+                        $"<color=#47ff18>{killer_name}</color> empalou <color=#ff003e>{victim_name}</color>!");
+            }
         }
 
         public static Dictionary<ulong, int> Kills = Database.pvpkills;
