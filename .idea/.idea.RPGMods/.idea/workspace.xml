@@ -4,81 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3a60da7-d089-4bf6-a720-ad1b4b81d10b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MDNMods/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Commands/Discord.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Commands/Ready.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/git_toolbox_prj.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGMods/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/AutoRespawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/AutoRespawn.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/BanUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/BanUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/BloodPotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/BloodPotion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/BloodSet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/BloodSet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Buffs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Buffs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Experience.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Experience.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Give.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Give.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/GodMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/GodMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Health.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Heat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Heat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Help.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Help.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Inventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Kick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Kick.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Kit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Kit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Leaderboard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Leaderboard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Mastery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Mastery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/NoCooldown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/NoCooldown.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Permission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Permission.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Ping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Ping.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Punish.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Punish.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/PvP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/PvP.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/ResetCooldown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/ResetCooldown.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Save.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Save.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/SpawnNPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/SpawnNPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Speed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Speed.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Stats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Stats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/SunImmunity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/SunImmunity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Teleport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Teleport.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Waypoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Waypoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobalSuppressions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlobalSuppressions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hooks/AdminAuthHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/AdminAuthHook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hooks/BuffHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/BuffHook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hooks/DeathHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/DeathHook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hooks/EquipmentSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/EquipmentSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hooks/KickBanHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/KickBanHook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hooks/SaveSystemHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/SaveSystemHook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hooks/ServerBootstrapHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/ServerBootstrapHook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hooks/VampireDownedHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hooks/VampireDownedHook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPGMods.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MDNMods.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPGMods.sln" beforeDir="false" afterPath="$PROJECT_DIR$/MDNMods.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Systems/BanSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/BanSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Systems/ExperienceSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/ExperienceSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Systems/HunterHunted.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/HunterHunted.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Systems/PermissionSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/PermissionSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Systems/PvPSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/PvPSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Systems/SiegeSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/SiegeSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Systems/WeaponMasterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Systems/WeaponMasterSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/AutoSaveSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/AutoSaveSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/CommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/Database.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/Database.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/Helper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/ItemKit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/ItemKit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/Output.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/RespawnCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/RespawnCharacter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/SquadList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/SquadList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-    </list>
+    <list default="true" id="c3a60da7-d089-4bf6-a720-ad1b4b81d10b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,7 +101,7 @@
       <workItem from="1658277077939" duration="545000" />
       <workItem from="1658339992701" duration="766000" />
       <workItem from="1658342186984" duration="609000" />
-      <workItem from="1658342986184" duration="13581000" />
+      <workItem from="1658342986184" duration="13621000" />
     </task>
     <task id="LOCAL-00001" summary="ajustando mov speed e adagas!">
       <created>1657910809958</created>
@@ -233,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658346168649</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Mudando nome para - MDNMods">
+      <created>1658508026548</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1658508026548</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +195,7 @@
     <MESSAGE value="master" />
     <MESSAGE value="Adicionando multiplicador de xp para mobs normais, refatorando alguns arquivos" />
     <MESSAGE value="adicionado boost multiplyer e isBoostEnable" />
-    <option name="LAST_COMMIT_MESSAGE" value="adicionado boost multiplyer e isBoostEnable" />
+    <MESSAGE value="Mudando nome para - MDNMods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mudando nome para - MDNMods" />
   </component>
 </project>

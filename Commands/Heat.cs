@@ -19,7 +19,7 @@ namespace MDNMods.Commands
 
             if (!HunterHunted.isActive)
             {
-                Output.CustomErrorMessage(ctx, "HunterHunted system is not enabled.");
+                Output.CustomErrorMessage(ctx, "Sistema de Procurado não está ativo.");
                 return;
             }
 
@@ -39,14 +39,14 @@ namespace MDNMods.Commands
                     }
                     else
                     {
-                        Output.CustomErrorMessage(ctx, $"Could not find specified player \"{name}\".");
+                        Output.CustomErrorMessage(ctx, $"Não foi possível encontrar o jogador especificado \"{name}\".");
                         return;
                     }
                 }
                 if (int.TryParse(ctx.Args[0], out var n)) Cache.heatlevel[SteamID] = n;
                 if (int.TryParse(ctx.Args[1], out var nm)) Cache.bandit_heatlevel[SteamID] = nm;
-                user.SendSystemMessage($"Player \"{CharName}\" heat value changed.");
-                user.SendSystemMessage($"Human: <color=#ffff00ff>{Cache.heatlevel[SteamID]}</color> | Bandit: <color=#ffff00ff>{Cache.bandit_heatlevel[SteamID]}</color>");
+                user.SendSystemMessage($"Jogador \"{CharName}\" valor de procurado alterado.");
+                user.SendSystemMessage($"Humanos: <color=#ffff00ff>{Cache.heatlevel[SteamID]}</color> | Bandidos: <color=#ffff00ff>{Cache.bandit_heatlevel[SteamID]}</color>");
                 HunterHunted.HeatManager(userEntity, charEntity, false);
                 return;
             }
@@ -54,29 +54,29 @@ namespace MDNMods.Commands
             HunterHunted.HeatManager(userEntity, charEntity, false);
 
             Cache.heatlevel.TryGetValue(SteamID, out var human_heatlevel);
-            if (human_heatlevel >= 3000) Output.SendLore(userEntity,$"<color=#0048ffff>[Humans]</color> <color=#c90e21ff>YOU ARE A MENACE...</color>");
-            else if (human_heatlevel >= 2000) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c90e21ff>The Vampire Hunters are hunting you...</color>");
-            else if (human_heatlevel >= 1000) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c90e21ff>Humans elite squads are hunting you...</color>");
-            else if (human_heatlevel >= 500) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c4515cff>Humans soldiers are hunting you...</color>");
-            else if (human_heatlevel >= 250) Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#c9999eff>The humans are hunting you...</color>");
-            else Output.SendLore(userEntity, $"<color=#0048ffff>[Humans]</color> <color=#ffffffff>You're currently anonymous...</color>");
-
+            if (human_heatlevel >= 3000) Output.SendLore(userEntity,$"<color=#0048ffff>[Humanos]</color> <color=#c90e21ff>VOCÊ É UMA AMEAÇA...</color>");
+            else if (human_heatlevel >= 2000) Output.SendLore(userEntity, $"<color=#0048ffff>[Humanos]</color> <color=#c90e21ff>Os caçadores de vampiros estão caçando você...</color>");
+            else if (human_heatlevel >= 1000) Output.SendLore(userEntity, $"<color=#0048ffff>[Humanos]</color> <color=#c90e21ff>Esquadrões de elite estão caçando você...</color>");
+            else if (human_heatlevel >= 500) Output.SendLore(userEntity, $"<color=#0048ffff>[Humanos]</color> <color=#c4515cff>Soldados estão caçando você...</color>");
+            else if (human_heatlevel >= 250) Output.SendLore(userEntity, $"<color=#0048ffff>[Humanos]</color> <color=#c9999eff>Os humanos estão caçando você...</color>");
+            else Output.SendLore(userEntity, $"<color=#0048ffff>[Humanos]</color> <color=#ffffffff>Você não está sendo caçado...</color>");
+            
             Cache.bandit_heatlevel.TryGetValue(SteamID, out var bandit_heatlevel);
-            if (bandit_heatlevel >= 2000) Output.SendLore(userEntity, $"<color=#ff0000ff>[Bandits]</color> <color=#c90e21ff>The bandits really wants you dead...</color>");
-            else if (bandit_heatlevel >= 1000) Output.SendLore(userEntity, $"<color=#ff0000ff>[Bandits]</color> <color=#c90e21ff>A large bandit squads are hunting you...</color>");
-            else if (bandit_heatlevel >= 500) Output.SendLore(userEntity, $"<color=#ff0000ff>[Bandits]</color> <color=#c4515cff>A small bandit squads are hunting you...</color>");
-            else if (bandit_heatlevel >= 250) Output.SendLore(userEntity,$"<color=#ff0000ff>[Bandits]</color> <color=#c9999eff>The bandits are hunting you...</color>");
-            else Output.SendLore(userEntity, $"<color=#ff0000ff>[Bandits]</color> <color=#ffffffff>The bandits doesn't recognize you...</color>");
-
+            if (bandit_heatlevel >= 2000) Output.SendLore(userEntity, $"<color=#ff0000ff>[Bandidos]</color> <color=#c90e21ff>Os bandidos realmente querem você morto...</color>");
+            else if (bandit_heatlevel >= 1000) Output.SendLore(userEntity, $"<color=#ff0000ff>[Bandidos]</color> <color=#c90e21ff>Um grande grupo de bandidos está caçando você...</color>");
+            else if (bandit_heatlevel >= 500) Output.SendLore(userEntity, $"<color=#ff0000ff>[Bandidos]</color> <color=#c4515cff>Um pequeno grupo de bandidos está caçando você...</color>");
+            else if (bandit_heatlevel >= 250) Output.SendLore(userEntity,$"<color=#ff0000ff>[Bandidos]</color> <color=#c9999eff>Os bandidos estão caçando você...</color>");
+            else Output.SendLore(userEntity, $"<color=#ff0000ff>[Bandidos]</color> <color=#ffffffff>Os bandidos não estão te caçando...</color>");
+            
             if (ctx.Args.Length == 1 && user.IsAdmin)
             {
                 if (!ctx.Args[0].Equals("debug") && ctx.Args.Length != 2) return;
                 user.SendSystemMessage($"Heat Cooldown: {HunterHunted.heat_cooldown}");
                 user.SendSystemMessage($"Bandit Heat Cooldown: {HunterHunted.bandit_heat_cooldown}");
                 user.SendSystemMessage($"Cooldown Interval: {HunterHunted.cooldown_timer}");
-                user.SendSystemMessage($"Ambush Interval: {HunterHunted.ambush_interval}");
-                user.SendSystemMessage($"Ambush Chance: {HunterHunted.ambush_chance}");
-                user.SendSystemMessage($"Human: <color=#ffff00ff>{human_heatlevel}</color> | Bandit: <color=#ffff00ff>{bandit_heatlevel}</color>");
+                user.SendSystemMessage($"Intervalo de Emboscada: {HunterHunted.ambush_interval}");
+                user.SendSystemMessage($"Chance de Emboscada: {HunterHunted.ambush_chance}");
+                user.SendSystemMessage($"Humanos: <color=#ffff00ff>{human_heatlevel}</color> | Bandidos: <color=#ffff00ff>{bandit_heatlevel}</color>");
             }
         }
     }

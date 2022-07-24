@@ -295,14 +295,14 @@ namespace MDNMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.DamageVsPlayerVampires,
-                            Value = (float)(PMastery * 0.005), //-- 0.005 = 50 of MaxHealth Decrease
+                            Value = (float)(PMastery * 0.0025), // 0.0025 = 0.25%
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.15), //-- 0.15 = 15.0 Attack Power increase
+                            Value = (float)(PMastery * 0.10), //-- 0.10 = 10.0 Attack Power increase
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -366,7 +366,7 @@ namespace MDNMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalCriticalStrikeChance,
-                            Value = (float)(PMastery * 0.0100), //-- 0.01 = 100% of Critical Strike Increase 
+                            Value = (float)(PMastery * 0.0080), //-- 0.008 = 80% of Critical Strike Increase 
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -380,14 +380,14 @@ namespace MDNMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.125), //-- 0.5 = 50 of MaxHealth Decrease
+                            Value = (float)(PMastery * 0.1), //-- 0.5 = 50 of MaxHealth Decrease
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.DamageVsPlayerVampires,
-                            Value = (float)(PMastery * 0.005), //-- 0.005 = 50 of MaxHealth Decrease
+                            Value = (float)(PMastery * 0.0025), //-- 0.005 = 50 of MaxHealth Decrease
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -446,13 +446,13 @@ namespace MDNMods.Systems
                         });
                         break;
                     case WeaponType.None:
-                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
-                        {
-                            StatType = UnitStatType.MovementSpeed,
-                            Value = (float)(PMastery * 0.005), //-- 0.005 = 0.5 of MovementSpeed Increase (12.5%)
-                            ModificationType = ModificationType.Add,
-                            Id = ModificationId.NewId(0)
-                        });
+                        // Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        // {
+                        //     StatType = UnitStatType.MovementSpeed,
+                        //     Value = (float)(PMastery * 0.005), //-- 0.005 = 0.5 of MovementSpeed Increase (12.5%)
+                        //     ModificationType = ModificationType.Add,
+                        //     Id = ModificationId.NewId(0)
+                        // });
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalPower,
