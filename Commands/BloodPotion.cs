@@ -26,7 +26,7 @@ namespace MDNMods.Commands
                     }
                     if (ctx.Args.Length >= 3) quantity = int.Parse(ctx.Args[2]);
                     
-                    for (int i = 0; i <= quantity; ++i)
+                    for (int i = 0; i < quantity; ++i)
                     {
                         Entity entity = Helper.AddItemToInventory(ctx, new PrefabGUID(828432508), 1);
                         var blood = ctx.EntityManager.GetComponentData<StoredBlood>(entity);

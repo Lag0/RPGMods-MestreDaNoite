@@ -99,7 +99,7 @@ namespace MDNMods.Systems
             bool isAdminKiller = killer_user.IsAdmin;
             bool isAdminVictim = victim_user.IsAdmin;
             
-            victim_user.SendSystemMessage($"Você foi morto por <color=#c90e21ff>\"{killer_name}\"</color>");
+            
 
             Database.pvpkills.TryGetValue(killer_id, out var KillerKills);
             Database.pvpdeath.TryGetValue(victim_id, out var VictimDeath);
@@ -116,9 +116,13 @@ namespace MDNMods.Systems
             //-- Announce Kills only if enable and if the killer is not staff
             if (announce_kills)
             {
+
                 if (PermissionSystem.GetUserPermission(killer_id) < 50 && PermissionSystem.GetUserPermission(victim_id) < 50)
-                    ServerChatUtils.SendSystemMessageToAllClients(em,
-                        $"<color=#47ff18>{killer_name}</color> empalou <color=#ff003e>{victim_name}</color>!");
+                {
+                    victim_user.SendSystemMessage($"Você foi morto por <color=#c90e21ff>\"{killer_name}\"</color>");
+                    ServerChatUtils.SendSystemMessageToAllClients(em, $"<color=#47ff18>{killer_name}</color> empalou <color=#ff003e>{victim_name}</color>!");
+                }
+                    
             }
         }
 
