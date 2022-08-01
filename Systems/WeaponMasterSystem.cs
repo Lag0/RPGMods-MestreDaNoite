@@ -306,6 +306,13 @@ namespace MDNMods.Systems
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
+                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        {
+                            StatType = UnitStatType.MaxHealth,
+                            Value = (float)(PMastery * 0.75), //-- 0.75 = 75 Max Health Increase
+                            ModificationType = ModificationType.Add,
+                            Id = ModificationId.NewId(0)
+                        });
                         break;
                     case WeaponType.Spear:
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
@@ -366,7 +373,7 @@ namespace MDNMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.PhysicalCriticalStrikeChance,
-                            Value = (float)(PMastery * 0.0080), //-- 0.008 = 80% of Critical Strike Increase 
+                            Value = (float)(PMastery * 0.0054), //-- 0.0054 = 54% of Critical Strike Increase 
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -396,7 +403,7 @@ namespace MDNMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.MaxHealth,
-                            Value = (float)(PMastery), //-- 100HP 
+                            Value = (float)(PMastery * 1.5), //-- 150HP 
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -453,20 +460,20 @@ namespace MDNMods.Systems
                         //     ModificationType = ModificationType.Add,
                         //     Id = ModificationId.NewId(0)
                         // });
-                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
-                        {
-                            StatType = UnitStatType.PhysicalPower,
-                            Value = (float)(PMastery * 0.60), //-- 0.60 = 60.0 of Attack Damage increase.
-                            ModificationType = ModificationType.Add,
-                            Id = ModificationId.NewId(0)
-                        });
-                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
-                        {
-                            StatType = UnitStatType.SpellPower,
-                            Value = (float)(PMastery * 0.10), //-- 0.1 = 10.0 Spell Power increase.
-                            ModificationType = ModificationType.Add,
-                            Id = ModificationId.NewId(0)
-                        });
+                        // Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        // {
+                        //     StatType = UnitStatType.PhysicalPower,
+                        //     Value = (float)(PMastery * 0.60), //-- 0.60 = 60.0 of Attack Damage increase.
+                        //     ModificationType = ModificationType.Add,
+                        //     Id = ModificationId.NewId(0)
+                        // });
+                        // Buffer.Add(new ModifyUnitStatBuff_DOTS()
+                        // {
+                        //     StatType = UnitStatType.SpellPower,
+                        //     Value = (float)(PMastery * 0.10), //-- 0.1 = 10.0 Spell Power increase.
+                        //     ModificationType = ModificationType.Add,
+                        //     Id = ModificationId.NewId(0)
+                        // });
                         break;
                 }
             }

@@ -89,18 +89,20 @@ namespace MDNMods.Systems
             var killer_user = em.GetComponentData<User>(killer_userEntity);
             var killer_name = killer_user.CharacterName.ToString();
             var killer_id = killer_user.PlatformId;
-
+            Equipment killerGear = em.GetComponentData<Equipment>(KillerEntity);
+            float killerLevel = killerGear.ArmorLevel + killerGear.WeaponLevel + killerGear.SpellLevel;
+            
             var victim = em.GetComponentData<PlayerCharacter>(VictimEntity);
             var victim_userEntity = victim.UserEntity._Entity;
             var victim_user = em.GetComponentData<User>(victim_userEntity);
             var victim_name = victim_user.CharacterName.ToString();
             var victim_id = victim_user.PlatformId;
+            Equipment victimGear = em.GetComponentData<Equipment>(VictimEntity);
+            float victimLevel = victimGear.ArmorLevel + victimGear.WeaponLevel + victimGear.SpellLevel;
             
             bool isAdminKiller = killer_user.IsAdmin;
             bool isAdminVictim = victim_user.IsAdmin;
             
-            
-
             Database.pvpkills.TryGetValue(killer_id, out var KillerKills);
             Database.pvpdeath.TryGetValue(victim_id, out var VictimDeath);
 
@@ -120,7 +122,7 @@ namespace MDNMods.Systems
                 if (PermissionSystem.GetUserPermission(killer_id) < 50 && PermissionSystem.GetUserPermission(victim_id) < 50)
                 {
                     victim_user.SendSystemMessage($"Você foi morto por <color=#c90e21ff>\"{killer_name}\"</color>");
-                    ServerChatUtils.SendSystemMessageToAllClients(em, $"<color=#47ff18>{killer_name}</color> empalou <color=#ff003e>{victim_name}</color>!");
+                    ServerChatUtils.SendSystemMessageToAllClients(em, $"<color=#47ff18>{killer_name} (Lv: {killerLevel})</color> empalou <color=#ff003e>{victim_name} (Lv: {victimLevel})</color>!");
                 }
                     
             }

@@ -1,5 +1,4 @@
 ﻿using ProjectM;
-using ProjectM.Gameplay.Scripting;
 using ProjectM.Network;
 using System;
 using System.Globalization;
@@ -8,18 +7,19 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using Wetstone.API;
 using static MDNMods.Utils.Database;
+using MDNMods.Hooks;
 
 namespace MDNMods.Utils
 {
     public static class Helper
     {
         private static Entity empty_entity = new Entity();
+        private static System.Random rand = new System.Random();
 
         public static void ApplyBuff(Entity User, Entity Char, PrefabGUID GUID)
         {
-            var des = VWorld.Server.GetExistingSystem<DebugEventsSystem>();
+            var des = Plugin.Server.GetExistingSystem<DebugEventsSystem>();
             var fromCharacter = new FromCharacter()
             {
                 User = User,
@@ -34,20 +34,20 @@ namespace MDNMods.Utils
 
         public static void RemoveBuff(Entity Char, PrefabGUID GUID)
         {
-            if (BuffUtility.HasBuff(VWorld.Server.EntityManager, Char, GUID))
+            if (BuffUtility.HasBuff(Plugin.Server.EntityManager, Char, GUID))
             {
-                BuffUtility.TryGetBuff(VWorld.Server.EntityManager, Char, GUID, out var BuffEntity_);
-                VWorld.Server.EntityManager.AddComponent<DestroyTag>(BuffEntity_);
+                BuffUtility.TryGetBuff(Plugin.Server.EntityManager, Char, GUID, out var BuffEntity_);
+                Plugin.Server.EntityManager.AddComponent<DestroyTag>(BuffEntity_);
                 return;
             }
         }
 
         public static string GetNameFromSteamID(ulong SteamID)
         {
-            var UserEntities = VWorld.Server.EntityManager.CreateEntityQuery(ComponentType.ReadOnly<User>()).ToEntityArray(Allocator.Temp);
+            var UserEntities = Plugin.Server.EntityManager.CreateEntityQuery(ComponentType.ReadOnly<User>()).ToEntityArray(Allocator.Temp);
             foreach (var Entity in UserEntities)
             {
-                var EntityData = VWorld.Server.EntityManager.GetComponentData<User>(Entity);
+                var EntityData = Plugin.Server.EntityManager.GetComponentData<User>(Entity);
                 if (EntityData.PlatformId == SteamID) return EntityData.CharacterName.ToString();
             }
             return null;
@@ -55,7 +55,7 @@ namespace MDNMods.Utils
 
         public static PrefabGUID GetGUIDFromName(string name)
         {
-            var gameDataSystem = VWorld.Server.GetExistingSystem<GameDataSystem>();
+            var gameDataSystem = Plugin.Server.GetExistingSystem<GameDataSystem>();
             var managed = gameDataSystem.ManagedDataRegistry;
 
             foreach (var entry in gameDataSystem.ItemHashLookupMap)
@@ -77,7 +77,7 @@ namespace MDNMods.Utils
 
         public static void KickPlayer(Entity userEntity)
         {
-            EntityManager em = VWorld.Server.EntityManager;
+            EntityManager em = Plugin.Server.EntityManager;
             var userData = em.GetComponentData<User>(userEntity);
             int index = userData.Index;
             NetworkId id = em.GetComponentData<NetworkId>(userEntity);
@@ -111,7 +111,7 @@ namespace MDNMods.Utils
         {
             unsafe
             {
-                var gameData = VWorld.Server.GetExistingSystem<GameDataSystem>();
+                var gameData = Plugin.Server.GetExistingSystem<GameDataSystem>();
                 var bytes = stackalloc byte[Marshal.SizeOf<FakeNull>()];
                 var bytePtr = new IntPtr(bytes);
                 Marshal.StructureToPtr<FakeNull>(new()
@@ -165,15 +165,13 @@ namespace MDNMods.Utils
             else if (name.Equals("normal")) type = buff.NormalForm;
             else if (name.Equals("golem")) type = buff.SiegeGolem_T02;
             else if (name.Equals("heal")) type = buff.AB_Town_Priest_HealBomb_Buff;
-            
-            
             else type = new PrefabGUID();
             return type;
         }
 
         public static bool FindPlayer(string name, bool mustOnline, out Entity playerEntity, out Entity userEntity)
         {
-            EntityManager entityManager = VWorld.Server.EntityManager;
+            EntityManager entityManager = Plugin.Server.EntityManager;
             foreach (var UsersEntity in entityManager.CreateEntityQuery(ComponentType.ReadOnly<User>()).ToEntityArray(Allocator.Temp))
             {
                 var target_component = entityManager.GetComponentData<User>(UsersEntity);
@@ -198,21 +196,51 @@ namespace MDNMods.Utils
 
         public static bool IsPlayerInCombat(Entity player)
         {
-            return BuffUtility.HasBuff(VWorld.Server.EntityManager, player, buff.InCombat) || BuffUtility.HasBuff(VWorld.Server.EntityManager, player, buff.InCombat_PvP);
+            return BuffUtility.HasBuff(Plugin.Server.EntityManager, player, buff.InCombat) || BuffUtility.HasBuff(Plugin.Server.EntityManager, player, buff.InCombat_PvP);
         }
 
         public static bool IsPlayerHasBuff(Entity player, PrefabGUID BuffGUID)
         {
-            return BuffUtility.HasBuff(VWorld.Server.EntityManager, player, BuffGUID);
+            return BuffUtility.HasBuff(Plugin.Server.EntityManager, player, BuffGUID);
         }
 
         public static void SetPvPShield(Entity character, bool value)
         {
-            var em = VWorld.Server.EntityManager;
+            var em = Plugin.Server.EntityManager;
             var cUnitStats = em.GetComponentData<UnitStats>(character);
             var cBuffer = em.GetBuffer<BoolModificationBuffer>(character);
             cUnitStats.PvPProtected.Set(value, cBuffer);
             em.SetComponentData(character, cUnitStats);
+        }
+
+        public static bool SpawnNPCIdentify(out float identifier, string name, float3 position, float minRange = 1, float maxRange = 2, float duration = -1)
+        {
+            identifier = 0f;
+            var duration_final = duration;
+            var isFound = database_units.TryGetValue(name, out var unit);
+            if (!isFound) return false;
+
+            float UniqueID = (float)rand.NextDouble();
+            if (UniqueID == 0.0) UniqueID += 0.00001f;
+            else if (UniqueID == 1.0f) UniqueID -= 0.00001f;
+            duration_final = duration + UniqueID;
+
+            bool GetNPCKey = Cache.spawnNPC_Listen.TryGetValue(duration, out _);
+            while (GetNPCKey)
+            {
+                UniqueID = (float)rand.NextDouble();
+                if (UniqueID == 0.0) UniqueID += 0.00001f;
+                else if (UniqueID == 1.0f) UniqueID -= 0.00001f;
+                duration_final = duration + UniqueID;
+            }
+
+            UnitSpawnerReactSystem_Patch.listen = true;
+            identifier = duration_final;
+            var Data = new SpawnNPCListen(duration, default, default, default, false);
+            Cache.spawnNPC_Listen.Add(duration_final, Data);
+
+            Plugin.Server.GetExistingSystem<UnitSpawnerUpdateSystem>().SpawnUnit(empty_entity, unit, position, 1, minRange, maxRange, duration_final);
+            return true;
         }
 
         public static bool SpawnAtPosition(Entity user, string name, int count, float2 position, float minRange = 1, float maxRange = 2, float duration = -1)
@@ -220,9 +248,9 @@ namespace MDNMods.Utils
             var isFound = database_units.TryGetValue(name, out var unit);
             if (!isFound) return false;
 
-            var translation = VWorld.Server.EntityManager.GetComponentData<Translation>(user);
+            var translation = Plugin.Server.EntityManager.GetComponentData<Translation>(user);
             var f3pos = new float3(position.x, translation.Value.y, position.y);
-            VWorld.Server.GetExistingSystem<UnitSpawnerUpdateSystem>().SpawnUnit(empty_entity, unit, f3pos, count, minRange, maxRange, duration);
+            Plugin.Server.GetExistingSystem<UnitSpawnerUpdateSystem>().SpawnUnit(empty_entity, unit, f3pos, count, minRange, maxRange, duration);
             return true;
         }
 
@@ -230,11 +258,11 @@ namespace MDNMods.Utils
         {
             var unit = new PrefabGUID(GUID);
 
-            var translation = VWorld.Server.EntityManager.GetComponentData<Translation>(user);
+            var translation = Plugin.Server.EntityManager.GetComponentData<Translation>(user);
             var f3pos = new float3(position.x, translation.Value.y, position.y);
             try
             {
-                VWorld.Server.GetExistingSystem<UnitSpawnerUpdateSystem>().SpawnUnit(empty_entity, unit, f3pos, count, minRange, maxRange, duration);
+                Plugin.Server.GetExistingSystem<UnitSpawnerUpdateSystem>().SpawnUnit(empty_entity, unit, f3pos, count, minRange, maxRange, duration);
             }
             catch
             {
@@ -245,7 +273,7 @@ namespace MDNMods.Utils
 
         public static PrefabGUID GetPrefabGUID(Entity entity)
         {
-            var entityManager = VWorld.Server.EntityManager;
+            var entityManager = Plugin.Server.EntityManager;
             PrefabGUID guid;
             try
             {
@@ -260,7 +288,7 @@ namespace MDNMods.Utils
 
         public static string GetPrefabName(PrefabGUID hashCode)
         {
-            var s = VWorld.Server.GetExistingSystem<PrefabCollectionSystem>();
+            var s = Plugin.Server.GetExistingSystem<PrefabCollectionSystem>();
             string name = "Nonexistent";
             if (hashCode.GuidHash == 0)
             {

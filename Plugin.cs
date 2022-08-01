@@ -9,6 +9,8 @@ using MDNMods.Systems;
 using MDNMods.Utils;
 using System.IO;
 using System.Reflection;
+using Unity.Entities;
+using UnityEngine;
 using Wetstone.API;
 using Wetstone.Hooks;
 
@@ -90,6 +92,33 @@ namespace MDNMods
 
         public static ManualLogSource Logger;
 
+        private static World _serverWorld;
+        public static World Server
+        {
+            get
+            {
+                if (_serverWorld != null) return _serverWorld;
+
+                _serverWorld = GetWorld("Server")
+                               ?? throw new System.Exception("There is no Server world (yet). Did you install a server mod on the client?");
+                return _serverWorld;
+            }
+        }
+
+        public static bool IsServer => Application.productName == "VRisingServer";
+
+        private static World GetWorld(string name)
+        {
+            foreach (var world in World.s_AllWorlds)
+            {
+                if (world.Name == name)
+                {
+                    return world;
+                }
+            }
+
+            return null;
+        }
         public void InitConfig()
         {
             Prefix = Config.Bind("Config", "Prefix", ".", "The prefix used for chat commands.");
