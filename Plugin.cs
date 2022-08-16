@@ -68,14 +68,14 @@ namespace MDNMods
         private ConfigEntry<int> Ambush_Chance;
         private ConfigEntry<float> Ambush_Despawn_Unit_Timer;
 
-        // private ConfigEntry<bool> EnableExperienceSystem;
-        // private ConfigEntry<int> MaxLevel;
-        // private ConfigEntry<float> EXPMultiplier;
-        // private ConfigEntry<float> VBloodEXPMultiplier;
-        // private ConfigEntry<double> EXPLostOnDeath;
-        // private ConfigEntry<float> EXPFormula_1;
-        // private ConfigEntry<double> EXPGroupModifier;
-        // private ConfigEntry<float> EXPGroupMaxDistance;
+         private ConfigEntry<bool> EnableExperienceSystem;
+         private ConfigEntry<int> MaxLevel;
+         private ConfigEntry<float> EXPMultiplier;
+         private ConfigEntry<float> VBloodEXPMultiplier;
+         private ConfigEntry<double> EXPLostOnDeath;
+         private ConfigEntry<float> EXPFormula_1;
+         private ConfigEntry<double> EXPGroupModifier;
+         private ConfigEntry<float> EXPGroupMaxDistance;
 
         private ConfigEntry<bool> EnableWeaponMaster;
         private ConfigEntry<bool> EnableWeaponMasterDecay;
@@ -166,16 +166,16 @@ namespace MDNMods
             Ambush_Despawn_Unit_Timer = Config.Bind("HunterHunted", "Ambush Despawn Timer", 300f, "Despawn the ambush squad after this many second if they are still alive. Ex.: -1 -> Never Despawn");
 
 
-            // EnableExperienceSystem = Config.Bind("Experience", "Enable", true, "Enable/disable the the Experience System.");
-            // MaxLevel = Config.Bind("Experience", "Max Level", 80, "Configure the experience system max level.");
-            // EXPMultiplier = Config.Bind("Experience", "Multiplier", 1.0f, "Multiply the EXP gained by player.\nEx.: 0.7f -> Will reduce the EXP gained by 30%\nFormula: UnitKilledLevel * EXPMultiplier");
-            // VBloodEXPMultiplier = Config.Bind("Experience", "VBlood Multiplier", 15f, "Multiply EXP gained from VBlood kill.\nFormula: EXPGained * VBloodMultiplier * EXPMultiplier");
-            // EXPLostOnDeath = Config.Bind("Experience", "EXP Lost / Death", 0.10, "Percentage of experience the player lost for every death by NPC, no EXP is lost for PvP.\nFormula: TotalPlayerEXP - (EXPNeeded * EXPLost)");
-            // EXPFormula_1 = Config.Bind("Experience", "Constant", 0.2f, "Increase or decrease the required EXP to level up.\nFormula: (level/constant)^2\n" +
-            //     "EXP Table & Formula: https://bit.ly/3npqdJw");
-            // EXPGroupModifier = Config.Bind("Experience", "Group Modifier", 0.75, "Set the modifier for EXP gained for each ally(player) in vicinity.\n" +
-            //     "Example if you have 2 ally nearby, EXPGained = ((EXPGained * Modifier)*Modifier)");
-            // EXPGroupMaxDistance = Config.Bind("Experience", "Ally Max Distance", 50f, "Set the maximum distance an ally(player) has to be from the player for them to share EXP with the player");
+            EnableExperienceSystem = Config.Bind("Experience", "Enable", true, "Enable/disable the the Experience System.");
+            MaxLevel = Config.Bind("Experience", "Max Level", 80, "Configure the experience system max level.");
+            EXPMultiplier = Config.Bind("Experience", "Multiplier", 1.0f, "Multiply the EXP gained by player.\nEx.: 0.7f -> Will reduce the EXP gained by 30%\nFormula: UnitKilledLevel * EXPMultiplier");
+            VBloodEXPMultiplier = Config.Bind("Experience", "VBlood Multiplier", 15f, "Multiply EXP gained from VBlood kill.\nFormula: EXPGained * VBloodMultiplier * EXPMultiplier");
+            EXPLostOnDeath = Config.Bind("Experience", "EXP Lost / Death", 0.10, "Percentage of experience the player lost for every death by NPC, no EXP is lost for PvP.\nFormula: TotalPlayerEXP - (EXPNeeded * EXPLost)");
+            EXPFormula_1 = Config.Bind("Experience", "Constant", 0.2f, "Increase or decrease the required EXP to level up.\nFormula: (level/constant)^2\n" +
+                "EXP Table & Formula: https://bit.ly/3npqdJw");
+            EXPGroupModifier = Config.Bind("Experience", "Group Modifier", 0.75, "Set the modifier for EXP gained for each ally(player) in vicinity.\n" +
+                "Example if you have 2 ally nearby, EXPGained = ((EXPGained * Modifier)*Modifier)");
+            EXPGroupMaxDistance = Config.Bind("Experience", "Ally Max Distance", 50f, "Set the maximum distance an ally(player) has to be from the player for them to share EXP with the player");
 
             EnableWeaponMaster = Config.Bind("Mastery", "Enable Weapon Mastery", true, "Enable/disable the weapon mastery system.");
             EnableWeaponMasterDecay = Config.Bind("Mastery", "Enable Mastery Decay", true, "Enable/disable the decay of weapon mastery when the user is offline.");
@@ -269,14 +269,14 @@ namespace MDNMods
             SiegeSystem.GolemPDef.Value = GolemPhysicalReduction.Value;
             SiegeSystem.GolemSDef.Value = GolemSpellReduction.Value;
 
-            // ExperienceSystem.isEXPActive = EnableExperienceSystem.Value;
-            // ExperienceSystem.MaxLevel = MaxLevel.Value;
-            // ExperienceSystem.EXPMultiplier = EXPMultiplier.Value;
-            // ExperienceSystem.VBloodMultiplier = VBloodEXPMultiplier.Value;
-            // ExperienceSystem.EXPLostOnDeath = EXPLostOnDeath.Value;
-            // ExperienceSystem.EXPConstant = EXPFormula_1.Value;
-            // ExperienceSystem.GroupModifier = EXPGroupModifier.Value;
-            // ExperienceSystem.GroupMaxDistance = EXPGroupMaxDistance.Value;
+             ExperienceSystem.isEXPActive = EnableExperienceSystem.Value;
+             ExperienceSystem.MaxLevel = MaxLevel.Value;
+             ExperienceSystem.EXPMultiplier = EXPMultiplier.Value;
+             ExperienceSystem.VBloodMultiplier = VBloodEXPMultiplier.Value;
+             ExperienceSystem.EXPLostOnDeath = EXPLostOnDeath.Value;
+             ExperienceSystem.EXPConstant = EXPFormula_1.Value;
+             ExperienceSystem.GroupModifier = EXPGroupModifier.Value;
+             ExperienceSystem.GroupMaxDistance = EXPGroupMaxDistance.Value;
 
             WeaponMasterSystem.isMasteryEnabled = EnableWeaponMaster.Value;
             WeaponMasterSystem.isDecaySystemEnabled = EnableWeaponMasterDecay.Value;

@@ -357,7 +357,7 @@ namespace MDNMods.Systems
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
                         {
                             StatType = UnitStatType.MaxHealth,
-                            Value = (float)(PMastery * -1.0), //-- 1/0 = 100 of MaxHealth Decrease
+                            Value = (float)(PMastery * -0.5), //-- 1/0 = 50 of MaxHealth Decrease
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
@@ -391,13 +391,6 @@ namespace MDNMods.Systems
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
-                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
-                        {
-                            StatType = UnitStatType.DamageVsPlayerVampires,
-                            Value = (float)(PMastery * 0.0025), //-- 0.005 = 50 of MaxHealth Decrease
-                            ModificationType = ModificationType.Add,
-                            Id = ModificationId.NewId(0)
-                        });
                         break;
                     case WeaponType.Mace:
                         Buffer.Add(new ModifyUnitStatBuff_DOTS()
@@ -427,13 +420,6 @@ namespace MDNMods.Systems
                         {
                             StatType = UnitStatType.PhysicalCriticalStrikeDamage,
                             Value = (float)(PMastery * 0.0030), //-- 0.0030 = 30% of Critical Damage increase.
-                            ModificationType = ModificationType.Add,
-                            Id = ModificationId.NewId(0)
-                        });
-                        Buffer.Add(new ModifyUnitStatBuff_DOTS()
-                        {
-                            StatType = UnitStatType.PhysicalCriticalStrikeChance,
-                            Value = (float)(PMastery * 0.0004), //-- 0.0004 = 4% of Critical Chance increase.
                             ModificationType = ModificationType.Add,
                             Id = ModificationId.NewId(0)
                         });
